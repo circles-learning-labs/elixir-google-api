@@ -104,6 +104,7 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
+      *   `:extraLocationTypes` (*type:* `list(String.t)`) - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
       *   `:filter` (*type:* `String.t`) - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
       *   `:pageSize` (*type:* `integer()`) - The maximum number of results to return. If not set, the service selects a default.
       *   `:pageToken` (*type:* `String.t`) - A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.
@@ -132,6 +133,7 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       :quotaUser => :query,
       :uploadType => :query,
       :upload_protocol => :query,
+      :extraLocationTypes => :query,
       :filter => :query,
       :pageSize => :query,
       :pageToken => :query
@@ -538,6 +540,7 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
       *   `:pageSize` (*type:* `integer()`) - Number of results to return in the list.
       *   `:pageToken` (*type:* `String.t`) - Page start.
+      *   `:returnPartialSuccess` (*type:* `boolean()`) - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
   *   `opts` (*type:* `keyword()`) - Call options
 
   ## Returns
@@ -574,7 +577,8 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       :uploadType => :query,
       :upload_protocol => :query,
       :pageSize => :query,
-      :pageToken => :query
+      :pageToken => :query,
+      :returnPartialSuccess => :query
     }
 
     request =
@@ -688,7 +692,7 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
-      *   `:webhookKey` (*type:* `String.t`) - Arbitrary additional key to find the maching repository for a webhook event if needed.
+      *   `:webhookKey` (*type:* `String.t`) - Arbitrary additional key to find the matching repository for a webhook event if needed.
       *   `:body` (*type:* `GoogleApi.CloudBuild.V2.Model.HttpBody.t`) - 
   *   `opts` (*type:* `keyword()`) - Call options
 
@@ -1423,6 +1427,7 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       *   `:filter` (*type:* `String.t`) - A filter expression that filters resources listed in the response. Expressions must follow API improvement proposal [AIP-160](https://google.aip.dev/160). e.g. `remote_uri:"https://github.com*"`.
       *   `:pageSize` (*type:* `integer()`) - Number of results to return in the list.
       *   `:pageToken` (*type:* `String.t`) - Page start.
+      *   `:returnPartialSuccess` (*type:* `boolean()`) - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
   *   `opts` (*type:* `keyword()`) - Call options
 
   ## Returns
@@ -1460,7 +1465,8 @@ defmodule GoogleApi.CloudBuild.V2.Api.Projects do
       :upload_protocol => :query,
       :filter => :query,
       :pageSize => :query,
-      :pageToken => :query
+      :pageToken => :query,
+      :returnPartialSuccess => :query
     }
 
     request =

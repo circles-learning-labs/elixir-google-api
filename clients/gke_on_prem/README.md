@@ -1,6 +1,6 @@
 # GoogleApi.GKEOnPrem
 
-GDC Virtual API client library.
+GKE On-Prem API client library.
 
 
 
@@ -11,7 +11,7 @@ Install this package from [Hex](https://hex.pm) by adding
 
 ```elixir
 def deps do
-  [{:google_api_gke_on_prem, "~> 0.6"}]
+  [{:google_api_gke_on_prem, "~> 0.7"}]
 end
 ```
 

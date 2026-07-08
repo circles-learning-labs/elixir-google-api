@@ -21,27 +21,34 @@ defmodule GoogleApi.Datastream.V1.Model.SourceConfig do
 
   ## Attributes
 
+  *   `mongodbSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.MongodbSourceConfig.t`, *default:* `nil`) - MongoDB data source configuration.
   *   `mysqlSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.MysqlSourceConfig.t`, *default:* `nil`) - MySQL data source configuration.
   *   `oracleSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.OracleSourceConfig.t`, *default:* `nil`) - Oracle data source configuration.
   *   `postgresqlSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.PostgresqlSourceConfig.t`, *default:* `nil`) - PostgreSQL data source configuration.
-  *   `sourceConnectionProfile` (*type:* `String.t`, *default:* `nil`) - Required. Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
+  *   `salesforceSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.SalesforceSourceConfig.t`, *default:* `nil`) - Salesforce data source configuration.
+  *   `sourceConnectionProfile` (*type:* `String.t`, *default:* `nil`) - Required. Source connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   *   `sqlServerSourceConfig` (*type:* `GoogleApi.Datastream.V1.Model.SqlServerSourceConfig.t`, *default:* `nil`) - SQLServer data source configuration.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :mongodbSourceConfig => GoogleApi.Datastream.V1.Model.MongodbSourceConfig.t() | nil,
           :mysqlSourceConfig => GoogleApi.Datastream.V1.Model.MysqlSourceConfig.t() | nil,
           :oracleSourceConfig => GoogleApi.Datastream.V1.Model.OracleSourceConfig.t() | nil,
           :postgresqlSourceConfig =>
             GoogleApi.Datastream.V1.Model.PostgresqlSourceConfig.t() | nil,
+          :salesforceSourceConfig =>
+            GoogleApi.Datastream.V1.Model.SalesforceSourceConfig.t() | nil,
           :sourceConnectionProfile => String.t() | nil,
           :sqlServerSourceConfig => GoogleApi.Datastream.V1.Model.SqlServerSourceConfig.t() | nil
         }
 
+  field(:mongodbSourceConfig, as: GoogleApi.Datastream.V1.Model.MongodbSourceConfig)
   field(:mysqlSourceConfig, as: GoogleApi.Datastream.V1.Model.MysqlSourceConfig)
   field(:oracleSourceConfig, as: GoogleApi.Datastream.V1.Model.OracleSourceConfig)
   field(:postgresqlSourceConfig, as: GoogleApi.Datastream.V1.Model.PostgresqlSourceConfig)
+  field(:salesforceSourceConfig, as: GoogleApi.Datastream.V1.Model.SalesforceSourceConfig)
   field(:sourceConnectionProfile)
   field(:sqlServerSourceConfig, as: GoogleApi.Datastream.V1.Model.SqlServerSourceConfig)
 end

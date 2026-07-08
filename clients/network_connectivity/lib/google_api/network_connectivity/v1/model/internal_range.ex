@@ -23,9 +23,11 @@ defmodule GoogleApi.NetworkConnectivity.V1.Model.InternalRange do
 
   *   `createTime` (*type:* `DateTime.t`, *default:* `nil`) - Time when the internal range was created.
   *   `description` (*type:* `String.t`, *default:* `nil`) - A description of this resource.
+  *   `excludeCidrRanges` (*type:* `list(String.t)`, *default:* `nil`) - Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows exclusion of particular CIDR ranges from the auto-allocation process, without having to reserve these blocks
+  *   `immutable` (*type:* `boolean()`, *default:* `nil`) - Optional. Immutable ranges cannot have their fields modified, except for labels and description.
   *   `ipCidrRange` (*type:* `String.t`, *default:* `nil`) - The IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
   *   `labels` (*type:* `map()`, *default:* `nil`) - User-defined labels.
-  *   `migration` (*type:* `GoogleApi.NetworkConnectivity.V1.Model.Migration.t`, *default:* `nil`) - Optional. Must be present if usage is set to FOR_MIGRATION. This field is for internal use.
+  *   `migration` (*type:* `GoogleApi.NetworkConnectivity.V1.Model.Migration.t`, *default:* `nil`) - Optional. Must be present if usage is set to FOR_MIGRATION.
   *   `name` (*type:* `String.t`, *default:* `nil`) - Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
   *   `network` (*type:* `String.t`, *default:* `nil`) - The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. For example: https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network} projects/{project}/locations/global/networks/{network} {network}
   *   `overlaps` (*type:* `list(String.t)`, *default:* `nil`) - Optional. Types of resources that are allowed to overlap with the current internal range.
@@ -42,6 +44,8 @@ defmodule GoogleApi.NetworkConnectivity.V1.Model.InternalRange do
   @type t :: %__MODULE__{
           :createTime => DateTime.t() | nil,
           :description => String.t() | nil,
+          :excludeCidrRanges => list(String.t()) | nil,
+          :immutable => boolean() | nil,
           :ipCidrRange => String.t() | nil,
           :labels => map() | nil,
           :migration => GoogleApi.NetworkConnectivity.V1.Model.Migration.t() | nil,
@@ -58,6 +62,8 @@ defmodule GoogleApi.NetworkConnectivity.V1.Model.InternalRange do
 
   field(:createTime, as: DateTime)
   field(:description)
+  field(:excludeCidrRanges, type: :list)
+  field(:immutable)
   field(:ipCidrRange)
   field(:labels, type: :map)
   field(:migration, as: GoogleApi.NetworkConnectivity.V1.Model.Migration)

@@ -26,11 +26,13 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
   *   `groupMemberships` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2GroupMembership.t)`, *default:* `nil`) - Contains details about groups of which this finding is a member. A group is a collection of findings that are related in some way. This field cannot be updated. Its value is ignored in all update requests.
   *   `createTime` (*type:* `DateTime.t`, *default:* `nil`) - Output only. The time at which the finding was created in Security Command Center.
   *   `state` (*type:* `String.t`, *default:* `nil`) - Output only. The state of the finding.
+  *   `chokepoint` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Chokepoint.t`, *default:* `nil`) - Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths converge, based on [attack path simulations] (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This field cannot be updated. Its value is ignored in all update requests.
   *   `orgPolicies` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2OrgPolicy.t)`, *default:* `nil`) - Contains information about the org policies associated with the finding.
   *   `database` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Database.t`, *default:* `nil`) - Database associated with the finding.
   *   `name` (*type:* `String.t`, *default:* `nil`) - The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}`
   *   `dataFlowEvents` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2DataFlowEvent.t)`, *default:* `nil`) - Data flow events associated with the finding.
   *   `vulnerability` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Vulnerability.t`, *default:* `nil`) - Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/)
+  *   `ipRules` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2IpRules.t`, *default:* `nil`) - IP rules associated with the finding.
   *   `mute` (*type:* `String.t`, *default:* `nil`) - Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a finding, a finding provider shouldn't set the value of mute.
   *   `moduleName` (*type:* `String.t`, *default:* `nil`) - Unique identifier of the module which generated the finding. Example: folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885
   *   `dataRetentionDeletionEvents` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2DataRetentionDeletionEvent.t)`, *default:* `nil`) - Data retention deletion events associated with the finding.
@@ -48,6 +50,7 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
   *   `application` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Application.t`, *default:* `nil`) - Represents an application associated with the finding.
   *   `files` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2File.t)`, *default:* `nil`) - File associated with the finding.
   *   `iamBindings` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2IamBinding.t)`, *default:* `nil`) - Represents IAM bindings associated with the finding.
+  *   `affectedResources` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2AffectedResources.t`, *default:* `nil`) - AffectedResources associated with the finding.
   *   `containers` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Container.t)`, *default:* `nil`) - Containers associated with the finding. This field provides information for both Kubernetes and non-Kubernetes containers.
   *   `externalUri` (*type:* `String.t`, *default:* `nil`) - The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL.
   *   `securityMarks` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2SecurityMarks.t`, *default:* `nil`) - Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
@@ -59,7 +62,9 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
   *   `processes` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Process.t)`, *default:* `nil`) - Represents operating system processes associated with the Finding.
   *   `logEntries` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2LogEntry.t)`, *default:* `nil`) - Log entries that are relevant to the finding.
   *   `cloudArmor` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2CloudArmor.t`, *default:* `nil`) - Fields related to Cloud Armor findings.
+  *   `networks` (*type:* `list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Network.t)`, *default:* `nil`) - Represents the VPC networks that the resource is attached to.
   *   `disk` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Disk.t`, *default:* `nil`) - Disk associated with the finding.
+  *   `job` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Job.t`, *default:* `nil`) - Job associated with the finding.
   *   `access` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Access.t`, *default:* `nil`) - Access details associated with the finding, such as more information on the caller, which method was accessed, and from where.
   *   `resourceName` (*type:* `String.t`, *default:* `nil`) - Immutable. For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string.
   *   `mitreAttack` (*type:* `GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2MitreAttack.t`, *default:* `nil`) - MITRE ATT&CK tactics and techniques related to this finding. See: https://attack.mitre.org
@@ -88,6 +93,8 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
             | nil,
           :createTime => DateTime.t() | nil,
           :state => String.t() | nil,
+          :chokepoint =>
+            GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Chokepoint.t() | nil,
           :orgPolicies =>
             list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2OrgPolicy.t()) | nil,
           :database =>
@@ -98,6 +105,8 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
             | nil,
           :vulnerability =>
             GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Vulnerability.t() | nil,
+          :ipRules =>
+            GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2IpRules.t() | nil,
           :mute => String.t() | nil,
           :moduleName => String.t() | nil,
           :dataRetentionDeletionEvents =>
@@ -135,6 +144,9 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
           :iamBindings =>
             list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2IamBinding.t())
             | nil,
+          :affectedResources =>
+            GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2AffectedResources.t()
+            | nil,
           :containers =>
             list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Container.t()) | nil,
           :externalUri => String.t() | nil,
@@ -161,7 +173,10 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
             list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2LogEntry.t()) | nil,
           :cloudArmor =>
             GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2CloudArmor.t() | nil,
+          :networks =>
+            list(GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Network.t()) | nil,
           :disk => GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Disk.t() | nil,
+          :job => GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Job.t() | nil,
           :access =>
             GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Access.t() | nil,
           :resourceName => String.t() | nil,
@@ -205,6 +220,7 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
 
   field(:createTime, as: DateTime)
   field(:state)
+  field(:chokepoint, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Chokepoint)
 
   field(:orgPolicies,
     as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2OrgPolicy,
@@ -223,6 +239,7 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
     as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Vulnerability
   )
 
+  field(:ipRules, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2IpRules)
   field(:mute)
   field(:moduleName)
 
@@ -270,6 +287,10 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
     type: :list
   )
 
+  field(:affectedResources,
+    as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2AffectedResources
+  )
+
   field(:containers,
     as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Container,
     type: :list
@@ -313,7 +334,14 @@ defmodule GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Finding d
   )
 
   field(:cloudArmor, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2CloudArmor)
+
+  field(:networks,
+    as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Network,
+    type: :list
+  )
+
   field(:disk, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Disk)
+  field(:job, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Job)
   field(:access, as: GoogleApi.SecurityCenter.V1.Model.GoogleCloudSecuritycenterV2Access)
   field(:resourceName)
 

@@ -24,6 +24,7 @@ defmodule GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoRes
   *   `generatedSamples` (*type:* `list(GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionMedia.t)`, *default:* `nil`) - The generates samples.
   *   `raiMediaFilteredCount` (*type:* `integer()`, *default:* `nil`) - Returns if any videos were filtered due to RAI policies.
   *   `raiMediaFilteredReasons` (*type:* `list(String.t)`, *default:* `nil`) - Returns rai failure reasons if any.
+  *   `videos` (*type:* `list(GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoResponseVideo.t)`, *default:* `nil`) - List of videos, used to align naming with the external response.
   """
 
   use GoogleApi.Gax.ModelBase
@@ -32,7 +33,12 @@ defmodule GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoRes
           :generatedSamples =>
             list(GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionMedia.t()) | nil,
           :raiMediaFilteredCount => integer() | nil,
-          :raiMediaFilteredReasons => list(String.t()) | nil
+          :raiMediaFilteredReasons => list(String.t()) | nil,
+          :videos =>
+            list(
+              GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoResponseVideo.t()
+            )
+            | nil
         }
 
   field(:generatedSamples,
@@ -42,6 +48,11 @@ defmodule GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoRes
 
   field(:raiMediaFilteredCount)
   field(:raiMediaFilteredReasons, type: :list)
+
+  field(:videos,
+    as: GoogleApi.AIPlatform.V1.Model.CloudAiLargeModelsVisionGenerateVideoResponseVideo,
+    type: :list
+  )
 end
 
 defimpl Poison.Decoder,

@@ -21,15 +21,18 @@ defmodule GoogleApi.Container.V1.Model.ManagedPrometheusConfig do
 
   ## Attributes
 
+  *   `autoMonitoringConfig` (*type:* `GoogleApi.Container.V1.Model.AutoMonitoringConfig.t`, *default:* `nil`) - GKE Workload Auto-Monitoring Configuration.
   *   `enabled` (*type:* `boolean()`, *default:* `nil`) - Enable Managed Collection.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :autoMonitoringConfig => GoogleApi.Container.V1.Model.AutoMonitoringConfig.t() | nil,
           :enabled => boolean() | nil
         }
 
+  field(:autoMonitoringConfig, as: GoogleApi.Container.V1.Model.AutoMonitoringConfig)
   field(:enabled)
 end
 

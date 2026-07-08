@@ -11,13 +11,13 @@ Install this package from [Hex](https://hex.pm) by adding
 
 ```elixir
 def deps do
-  [{:google_api_vault, "~> 0.24"}]
+  [{:google_api_vault, "~> 0.25"}]
 end
 ```
 
 ## For more information
 
-Product documentation is available at [https://developers.google.com/vault](https://developers.google.com/vault).
+Product documentation is available at [https://developers.google.com/workspace/vault](https://developers.google.com/workspace/vault).
 
 Library reference documentation is published on Hexdocs at
 [https://hexdocs.pm/google_api_vault](https://hexdocs.pm/google_api_vault).

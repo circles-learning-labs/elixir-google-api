@@ -37,7 +37,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
   *   `desiredControlPlaneEndpointsConfig` (*type:* `GoogleApi.Container.V1.Model.ControlPlaneEndpointsConfig.t`, *default:* `nil`) - Control plane endpoints configuration.
   *   `desiredLoggingService` (*type:* `String.t`, *default:* `nil`) - The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
   *   `desiredSecurityPostureConfig` (*type:* `GoogleApi.Container.V1.Model.SecurityPostureConfig.t`, *default:* `nil`) - Enable/Disable Security Posture API features for the cluster.
-  *   `desiredMonitoringService` (*type:* `String.t`, *default:* `nil`) - The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+  *   `desiredMonitoringService` (*type:* `String.t`, *default:* `nil`) - The monitoring service the cluster should use to write metrics. Currently available options: * `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   *   `desiredContainerdConfig` (*type:* `GoogleApi.Container.V1.Model.ContainerdConfig.t`, *default:* `nil`) - The desired containerd config for the cluster.
   *   `desiredNotificationConfig` (*type:* `GoogleApi.Container.V1.Model.NotificationConfig.t`, *default:* `nil`) - The desired notification configuration.
   *   `desiredL4ilbSubsettingConfig` (*type:* `GoogleApi.Container.V1.Model.ILBSubsettingConfig.t`, *default:* `nil`) - The desired L4 Internal Load Balancer Subsetting configuration.
@@ -69,6 +69,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
   *   `desiredClusterAutoscaling` (*type:* `GoogleApi.Container.V1.Model.ClusterAutoscaling.t`, *default:* `nil`) - Cluster-level autoscaling configuration.
   *   `desiredFleet` (*type:* `GoogleApi.Container.V1.Model.Fleet.t`, *default:* `nil`) - The desired fleet configuration for the cluster.
   *   `desiredParentProductConfig` (*type:* `GoogleApi.Container.V1.Model.ParentProductConfig.t`, *default:* `nil`) - The desired parent product config for the cluster.
+  *   `desiredDisableL4LbFirewallReconciliation` (*type:* `boolean()`, *default:* `nil`) - Enable/Disable L4 LB VPC firewall reconciliation for the cluster.
   *   `desiredResourceUsageExportConfig` (*type:* `GoogleApi.Container.V1.Model.ResourceUsageExportConfig.t`, *default:* `nil`) - The desired configuration for exporting resource usage.
   *   `removedAdditionalPodRangesConfig` (*type:* `GoogleApi.Container.V1.Model.AdditionalPodRangesConfig.t`, *default:* `nil`) - The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
   *   `desiredNodeVersion` (*type:* `String.t`, *default:* `nil`) - The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
@@ -78,6 +79,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
   *   `desiredLocations` (*type:* `list(String.t)`, *default:* `nil`) - The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
   *   `desiredDefaultSnatStatus` (*type:* `GoogleApi.Container.V1.Model.DefaultSnatStatus.t`, *default:* `nil`) - The desired status of whether to disable default sNAT for this cluster.
   *   `etag` (*type:* `String.t`, *default:* `nil`) - The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
+  *   `desiredPodAutoscaling` (*type:* `GoogleApi.Container.V1.Model.PodAutoscaling.t`, *default:* `nil`) - The desired config for pod autoscaling.
   *   `desiredVerticalPodAutoscaling` (*type:* `GoogleApi.Container.V1.Model.VerticalPodAutoscaling.t`, *default:* `nil`) - Cluster-level Vertical Pod Autoscaling configuration.
   *   `desiredBinaryAuthorization` (*type:* `GoogleApi.Container.V1.Model.BinaryAuthorization.t`, *default:* `nil`) - The desired configuration options for the Binary Authorization feature.
   *   `desiredNodePoolAutoConfigKubeletConfig` (*type:* `GoogleApi.Container.V1.Model.NodeKubeletConfig.t`, *default:* `nil`) - The desired node kubelet config for all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
@@ -158,6 +160,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
           :desiredFleet => GoogleApi.Container.V1.Model.Fleet.t() | nil,
           :desiredParentProductConfig =>
             GoogleApi.Container.V1.Model.ParentProductConfig.t() | nil,
+          :desiredDisableL4LbFirewallReconciliation => boolean() | nil,
           :desiredResourceUsageExportConfig =>
             GoogleApi.Container.V1.Model.ResourceUsageExportConfig.t() | nil,
           :removedAdditionalPodRangesConfig =>
@@ -170,6 +173,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
           :desiredLocations => list(String.t()) | nil,
           :desiredDefaultSnatStatus => GoogleApi.Container.V1.Model.DefaultSnatStatus.t() | nil,
           :etag => String.t() | nil,
+          :desiredPodAutoscaling => GoogleApi.Container.V1.Model.PodAutoscaling.t() | nil,
           :desiredVerticalPodAutoscaling =>
             GoogleApi.Container.V1.Model.VerticalPodAutoscaling.t() | nil,
           :desiredBinaryAuthorization =>
@@ -260,6 +264,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
   field(:desiredClusterAutoscaling, as: GoogleApi.Container.V1.Model.ClusterAutoscaling)
   field(:desiredFleet, as: GoogleApi.Container.V1.Model.Fleet)
   field(:desiredParentProductConfig, as: GoogleApi.Container.V1.Model.ParentProductConfig)
+  field(:desiredDisableL4LbFirewallReconciliation)
 
   field(:desiredResourceUsageExportConfig,
     as: GoogleApi.Container.V1.Model.ResourceUsageExportConfig
@@ -276,6 +281,7 @@ defmodule GoogleApi.Container.V1.Model.ClusterUpdate do
   field(:desiredLocations, type: :list)
   field(:desiredDefaultSnatStatus, as: GoogleApi.Container.V1.Model.DefaultSnatStatus)
   field(:etag)
+  field(:desiredPodAutoscaling, as: GoogleApi.Container.V1.Model.PodAutoscaling)
   field(:desiredVerticalPodAutoscaling, as: GoogleApi.Container.V1.Model.VerticalPodAutoscaling)
   field(:desiredBinaryAuthorization, as: GoogleApi.Container.V1.Model.BinaryAuthorization)
 

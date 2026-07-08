@@ -56,7 +56,7 @@ defmodule GoogleApi.Container.V1.Model.NodeConfig do
   *   `diskSizeGb` (*type:* `integer()`, *default:* `nil`) - Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
   *   `machineType` (*type:* `String.t`, *default:* `nil`) - The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
   *   `imageType` (*type:* `String.t`, *default:* `nil`) - The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
-  *   `localSsdEncryptionMode` (*type:* `String.t`, *default:* `nil`) - Specifies which method should be used for encrypting the Local SSDs attahced to the node.
+  *   `localSsdEncryptionMode` (*type:* `String.t`, *default:* `nil`) - Specifies which method should be used for encrypting the Local SSDs attached to the node.
   *   `preemptible` (*type:* `boolean()`, *default:* `nil`) - Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
   *   `spot` (*type:* `boolean()`, *default:* `nil`) - Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
   *   `storagePools` (*type:* `list(String.t)`, *default:* `nil`) - List of Storage Pools where boot disks are provisioned.
@@ -64,6 +64,7 @@ defmodule GoogleApi.Container.V1.Model.NodeConfig do
   *   `soleTenantConfig` (*type:* `GoogleApi.Container.V1.Model.SoleTenantConfig.t`, *default:* `nil`) - Parameters for node pools to be backed by shared sole tenant node groups.
   *   `workloadMetadataConfig` (*type:* `GoogleApi.Container.V1.Model.WorkloadMetadataConfig.t`, *default:* `nil`) - The workload metadata configuration for this node.
   *   `reservationAffinity` (*type:* `GoogleApi.Container.V1.Model.ReservationAffinity.t`, *default:* `nil`) - The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
+  *   `flexStart` (*type:* `boolean()`, *default:* `nil`) - Flex Start flag for enabling Flex Start VM.
   """
 
   use GoogleApi.Gax.ModelBase
@@ -117,7 +118,8 @@ defmodule GoogleApi.Container.V1.Model.NodeConfig do
           :soleTenantConfig => GoogleApi.Container.V1.Model.SoleTenantConfig.t() | nil,
           :workloadMetadataConfig =>
             GoogleApi.Container.V1.Model.WorkloadMetadataConfig.t() | nil,
-          :reservationAffinity => GoogleApi.Container.V1.Model.ReservationAffinity.t() | nil
+          :reservationAffinity => GoogleApi.Container.V1.Model.ReservationAffinity.t() | nil,
+          :flexStart => boolean() | nil
         }
 
   field(:sandboxConfig, as: GoogleApi.Container.V1.Model.SandboxConfig)
@@ -171,6 +173,7 @@ defmodule GoogleApi.Container.V1.Model.NodeConfig do
   field(:soleTenantConfig, as: GoogleApi.Container.V1.Model.SoleTenantConfig)
   field(:workloadMetadataConfig, as: GoogleApi.Container.V1.Model.WorkloadMetadataConfig)
   field(:reservationAffinity, as: GoogleApi.Container.V1.Model.ReservationAffinity)
+  field(:flexStart)
 end
 
 defimpl Poison.Decoder, for: GoogleApi.Container.V1.Model.NodeConfig do

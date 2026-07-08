@@ -23,6 +23,8 @@ defmodule GoogleApi.Compute.V1.Model.RegionNetworkFirewallPoliciesGetEffectiveFi
 
   *   `displayName` (*type:* `String.t`, *default:* `nil`) - [Output Only] The display name of the firewall policy.
   *   `name` (*type:* `String.t`, *default:* `nil`) - [Output Only] The name of the firewall policy.
+  *   `packetMirroringRules` (*type:* `list(GoogleApi.Compute.V1.Model.FirewallPolicyRule.t)`, *default:* `nil`) - [Output only] The packet mirroring rules that apply to the network.
+  *   `priority` (*type:* `integer()`, *default:* `nil`) - [Output only] Priority of firewall policy association. Not applicable for type=HIERARCHY.
   *   `rules` (*type:* `list(GoogleApi.Compute.V1.Model.FirewallPolicyRule.t)`, *default:* `nil`) - [Output only] The rules that apply to the network.
   *   `type` (*type:* `String.t`, *default:* `nil`) - [Output Only] The type of the firewall policy. Can be one of HIERARCHY, NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
   """
@@ -32,12 +34,16 @@ defmodule GoogleApi.Compute.V1.Model.RegionNetworkFirewallPoliciesGetEffectiveFi
   @type t :: %__MODULE__{
           :displayName => String.t() | nil,
           :name => String.t() | nil,
+          :packetMirroringRules => list(GoogleApi.Compute.V1.Model.FirewallPolicyRule.t()) | nil,
+          :priority => integer() | nil,
           :rules => list(GoogleApi.Compute.V1.Model.FirewallPolicyRule.t()) | nil,
           :type => String.t() | nil
         }
 
   field(:displayName)
   field(:name)
+  field(:packetMirroringRules, as: GoogleApi.Compute.V1.Model.FirewallPolicyRule, type: :list)
+  field(:priority)
   field(:rules, as: GoogleApi.Compute.V1.Model.FirewallPolicyRule, type: :list)
   field(:type)
 end

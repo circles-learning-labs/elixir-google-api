@@ -2,7 +2,7 @@
 
 Firebase Cloud Messaging API client library.
 
-FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.
+FCM send API that provides a cross-platform messaging solution to reliably deliver messages.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Install this package from [Hex](https://hex.pm) by adding
 
 ```elixir
 def deps do
-  [{:google_api_fcm, "~> 0.13"}]
+  [{:google_api_fcm, "~> 0.14"}]
 end
 ```
 

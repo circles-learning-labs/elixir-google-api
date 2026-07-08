@@ -30,15 +30,17 @@ defmodule GoogleApi.Compute.V1.Model.Subnetwork do
   *   `id` (*type:* `String.t`, *default:* `nil`) - [Output Only] The unique identifier for the resource. This identifier is defined by the server.
   *   `internalIpv6Prefix` (*type:* `String.t`, *default:* `nil`) - The internal IPv6 address range that is owned by this subnetwork.
   *   `ipCidrRange` (*type:* `String.t`, *default:* `nil`) - The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
+  *   `ipCollection` (*type:* `String.t`, *default:* `nil`) - Reference to the source of IP, like a PublicDelegatedPrefix (PDP) for BYOIP. The PDP must be a sub-PDP in EXTERNAL_IPV6_SUBNETWORK_CREATION mode. Use one of the following formats to specify a sub-PDP when creating a dual stack subnetwork with external access using BYOIP: - Full resource URL, as in https://www.googleapis.com/compute/v1/projects/projectId/regions/region /publicDelegatedPrefixes/sub-pdp-name - Partial URL, as in - projects/projectId/regions/region/publicDelegatedPrefixes/ sub-pdp-name - regions/region/publicDelegatedPrefixes/sub-pdp-name 
   *   `ipv6AccessType` (*type:* `String.t`, *default:* `nil`) - The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
   *   `ipv6CidrRange` (*type:* `String.t`, *default:* `nil`) - [Output Only] This field is for internal use.
+  *   `ipv6GceEndpoint` (*type:* `String.t`, *default:* `nil`) - [Output Only] Possible endpoints of this subnetwork. It can be one of the following: - VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb. - VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly. 
   *   `kind` (*type:* `String.t`, *default:* `compute#subnetwork`) - [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
   *   `logConfig` (*type:* `GoogleApi.Compute.V1.Model.SubnetworkLogConfig.t`, *default:* `nil`) - This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
   *   `name` (*type:* `String.t`, *default:* `nil`) - The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   *   `network` (*type:* `String.t`, *default:* `nil`) - The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
   *   `privateIpGoogleAccess` (*type:* `boolean()`, *default:* `nil`) - Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
   *   `privateIpv6GoogleAccess` (*type:* `String.t`, *default:* `nil`) - This field is for internal use. This field can be both set at resource creation time and updated using patch.
-  *   `purpose` (*type:* `String.t`, *default:* `nil`) - The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet migration from one peered VPC to another. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
+  *   `purpose` (*type:* `String.t`, *default:* `nil`) - The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION, PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet migration from one peered VPC to another. A subnet with purpose set to PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
   *   `region` (*type:* `String.t`, *default:* `nil`) - URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
   *   `reservedInternalRange` (*type:* `String.t`, *default:* `nil`) - The URL of the reserved internal range.
   *   `role` (*type:* `String.t`, *default:* `nil`) - The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -60,8 +62,10 @@ defmodule GoogleApi.Compute.V1.Model.Subnetwork do
           :id => String.t() | nil,
           :internalIpv6Prefix => String.t() | nil,
           :ipCidrRange => String.t() | nil,
+          :ipCollection => String.t() | nil,
           :ipv6AccessType => String.t() | nil,
           :ipv6CidrRange => String.t() | nil,
+          :ipv6GceEndpoint => String.t() | nil,
           :kind => String.t() | nil,
           :logConfig => GoogleApi.Compute.V1.Model.SubnetworkLogConfig.t() | nil,
           :name => String.t() | nil,
@@ -88,8 +92,10 @@ defmodule GoogleApi.Compute.V1.Model.Subnetwork do
   field(:id)
   field(:internalIpv6Prefix)
   field(:ipCidrRange)
+  field(:ipCollection)
   field(:ipv6AccessType)
   field(:ipv6CidrRange)
+  field(:ipv6GceEndpoint)
   field(:kind)
   field(:logConfig, as: GoogleApi.Compute.V1.Model.SubnetworkLogConfig)
   field(:name)

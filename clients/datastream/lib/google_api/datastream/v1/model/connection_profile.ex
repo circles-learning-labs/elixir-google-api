@@ -27,11 +27,15 @@ defmodule GoogleApi.Datastream.V1.Model.ConnectionProfile do
   *   `forwardSshConnectivity` (*type:* `GoogleApi.Datastream.V1.Model.ForwardSshTunnelConnectivity.t`, *default:* `nil`) - Forward SSH tunnel connectivity.
   *   `gcsProfile` (*type:* `GoogleApi.Datastream.V1.Model.GcsProfile.t`, *default:* `nil`) - Cloud Storage ConnectionProfile configuration.
   *   `labels` (*type:* `map()`, *default:* `nil`) - Labels.
+  *   `mongodbProfile` (*type:* `GoogleApi.Datastream.V1.Model.MongodbProfile.t`, *default:* `nil`) - MongoDB Connection Profile configuration.
   *   `mysqlProfile` (*type:* `GoogleApi.Datastream.V1.Model.MysqlProfile.t`, *default:* `nil`) - MySQL ConnectionProfile configuration.
   *   `name` (*type:* `String.t`, *default:* `nil`) - Output only. Identifier. The resource's name.
   *   `oracleProfile` (*type:* `GoogleApi.Datastream.V1.Model.OracleProfile.t`, *default:* `nil`) - Oracle ConnectionProfile configuration.
   *   `postgresqlProfile` (*type:* `GoogleApi.Datastream.V1.Model.PostgresqlProfile.t`, *default:* `nil`) - PostgreSQL Connection Profile configuration.
   *   `privateConnectivity` (*type:* `GoogleApi.Datastream.V1.Model.PrivateConnectivity.t`, *default:* `nil`) - Private connectivity.
+  *   `salesforceProfile` (*type:* `GoogleApi.Datastream.V1.Model.SalesforceProfile.t`, *default:* `nil`) - Salesforce Connection Profile configuration.
+  *   `satisfiesPzi` (*type:* `boolean()`, *default:* `nil`) - Output only. Reserved for future use.
+  *   `satisfiesPzs` (*type:* `boolean()`, *default:* `nil`) - Output only. Reserved for future use.
   *   `sqlServerProfile` (*type:* `GoogleApi.Datastream.V1.Model.SqlServerProfile.t`, *default:* `nil`) - SQLServer Connection Profile configuration.
   *   `staticServiceIpConnectivity` (*type:* `GoogleApi.Datastream.V1.Model.StaticServiceIpConnectivity.t`, *default:* `nil`) - Static Service IP connectivity.
   *   `updateTime` (*type:* `DateTime.t`, *default:* `nil`) - Output only. The update time of the resource.
@@ -47,11 +51,15 @@ defmodule GoogleApi.Datastream.V1.Model.ConnectionProfile do
             GoogleApi.Datastream.V1.Model.ForwardSshTunnelConnectivity.t() | nil,
           :gcsProfile => GoogleApi.Datastream.V1.Model.GcsProfile.t() | nil,
           :labels => map() | nil,
+          :mongodbProfile => GoogleApi.Datastream.V1.Model.MongodbProfile.t() | nil,
           :mysqlProfile => GoogleApi.Datastream.V1.Model.MysqlProfile.t() | nil,
           :name => String.t() | nil,
           :oracleProfile => GoogleApi.Datastream.V1.Model.OracleProfile.t() | nil,
           :postgresqlProfile => GoogleApi.Datastream.V1.Model.PostgresqlProfile.t() | nil,
           :privateConnectivity => GoogleApi.Datastream.V1.Model.PrivateConnectivity.t() | nil,
+          :salesforceProfile => GoogleApi.Datastream.V1.Model.SalesforceProfile.t() | nil,
+          :satisfiesPzi => boolean() | nil,
+          :satisfiesPzs => boolean() | nil,
           :sqlServerProfile => GoogleApi.Datastream.V1.Model.SqlServerProfile.t() | nil,
           :staticServiceIpConnectivity =>
             GoogleApi.Datastream.V1.Model.StaticServiceIpConnectivity.t() | nil,
@@ -64,11 +72,15 @@ defmodule GoogleApi.Datastream.V1.Model.ConnectionProfile do
   field(:forwardSshConnectivity, as: GoogleApi.Datastream.V1.Model.ForwardSshTunnelConnectivity)
   field(:gcsProfile, as: GoogleApi.Datastream.V1.Model.GcsProfile)
   field(:labels, type: :map)
+  field(:mongodbProfile, as: GoogleApi.Datastream.V1.Model.MongodbProfile)
   field(:mysqlProfile, as: GoogleApi.Datastream.V1.Model.MysqlProfile)
   field(:name)
   field(:oracleProfile, as: GoogleApi.Datastream.V1.Model.OracleProfile)
   field(:postgresqlProfile, as: GoogleApi.Datastream.V1.Model.PostgresqlProfile)
   field(:privateConnectivity, as: GoogleApi.Datastream.V1.Model.PrivateConnectivity)
+  field(:salesforceProfile, as: GoogleApi.Datastream.V1.Model.SalesforceProfile)
+  field(:satisfiesPzi)
+  field(:satisfiesPzs)
   field(:sqlServerProfile, as: GoogleApi.Datastream.V1.Model.SqlServerProfile)
 
   field(:staticServiceIpConnectivity,

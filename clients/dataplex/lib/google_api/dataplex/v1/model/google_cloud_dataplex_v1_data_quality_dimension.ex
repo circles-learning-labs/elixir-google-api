@@ -21,7 +21,7 @@ defmodule GoogleApi.Dataplex.V1.Model.GoogleCloudDataplexV1DataQualityDimension 
 
   ## Attributes
 
-  *   `name` (*type:* `String.t`, *default:* `nil`) - The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+  *   `name` (*type:* `String.t`, *default:* `nil`) - Optional. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
   """
 
   use GoogleApi.Gax.ModelBase

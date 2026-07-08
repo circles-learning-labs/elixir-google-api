@@ -169,6 +169,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
+      *   `:extraLocationTypes` (*type:* `list(String.t)`) - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
       *   `:filter` (*type:* `String.t`) - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
       *   `:pageSize` (*type:* `integer()`) - The maximum number of results to return. If not set, the service selects a default.
       *   `:pageToken` (*type:* `String.t`) - A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.
@@ -197,6 +198,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
       :quotaUser => :query,
       :uploadType => :query,
       :upload_protocol => :query,
+      :extraLocationTypes => :query,
       :filter => :query,
       :pageSize => :query,
       :pageToken => :query
@@ -219,7 +221,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
   end
 
   @doc """
-  Update default config for a given project and location. *Note:* This method does not fully implement AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of only updating the set fields, the request is treated as a full update on all modifiable fields 
+  Update default config for a given project and location. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.*
 
   ## Parameters
 
@@ -532,7 +534,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
-      *   `:force` (*type:* `boolean()`) - If set to true, any child resources of this repository will also be deleted. (Otherwise, the request will only succeed if the repository has no child resources.)
+      *   `:force` (*type:* `boolean()`) - Optional. If set to true, any child resources of this repository will also be deleted. (Otherwise, the request will only succeed if the repository has no child resources.)
   *   `opts` (*type:* `keyword()`) - Call options
 
   ## Returns
@@ -956,7 +958,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
   end
 
   @doc """
-  Updates a single Repository. *Note:* This method does not fully implement AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of only updating the set fields, the request is treated as a full update on all modifiable fields 
+  Updates a single Repository. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.*
 
   ## Parameters
 
@@ -1923,7 +1925,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
   end
 
   @doc """
-  Updates a single ReleaseConfig. *Note:* This method does not fully implement AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of only updating the set fields, the request is treated as a full update on all modifiable fields 
+  Updates a single ReleaseConfig. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.*
 
   ## Parameters
 
@@ -2287,7 +2289,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
   end
 
   @doc """
-  Updates a single WorkflowConfig. *Note:* This method does not fully implement AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of only updating the set fields, the request is treated as a full update on all modifiable fields 
+  Updates a single WorkflowConfig. **Note:** *This method does not fully implement [AIP/134](https://google.aip.dev/134). The wildcard entry (\\*) is treated as a bad request, and when the `field_mask` is omitted, the request is treated as a full update on all modifiable fields.*
 
   ## Parameters
 
@@ -2384,7 +2386,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.CancelWorkflowInvocationResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workflow_invocations_cancel(
@@ -2393,7 +2395,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.CancelWorkflowInvocationResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -2429,7 +2431,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.CancelWorkflowInvocationResponse{}]
+    )
   end
 
   @doc """
@@ -2824,7 +2828,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.CommitWorkspaceChangesResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_commit(
@@ -2833,7 +2837,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.CommitWorkspaceChangesResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -2869,7 +2873,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.CommitWorkspaceChangesResponse{}]
+    )
   end
 
   @doc """
@@ -3776,7 +3782,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.PullGitCommitsResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_pull(
@@ -3785,7 +3791,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.PullGitCommitsResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -3821,7 +3827,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.PullGitCommitsResponse{}]
+    )
   end
 
   @doc """
@@ -3848,7 +3856,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.PushGitCommitsResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_push(
@@ -3857,7 +3865,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.PushGitCommitsResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -3893,7 +3901,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.PushGitCommitsResponse{}]
+    )
   end
 
   @doc """
@@ -4072,7 +4082,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.RemoveDirectoryResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_remove_directory(
@@ -4081,7 +4091,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.RemoveDirectoryResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -4117,7 +4127,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.RemoveDirectoryResponse{}]
+    )
   end
 
   @doc """
@@ -4144,7 +4156,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.RemoveFileResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_remove_file(
@@ -4153,7 +4165,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.RemoveFileResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -4189,7 +4201,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.RemoveFileResponse{}])
   end
 
   @doc """
@@ -4216,7 +4228,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
   ## Returns
 
-  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.Empty{}}` on success
+  *   `{:ok, %GoogleApi.Dataform.V1beta1.Model.ResetWorkspaceChangesResponse{}}` on success
   *   `{:error, info}` on failure
   """
   @spec dataform_projects_locations_repositories_workspaces_reset(
@@ -4225,7 +4237,7 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
           keyword(),
           keyword()
         ) ::
-          {:ok, GoogleApi.Dataform.V1beta1.Model.Empty.t()}
+          {:ok, GoogleApi.Dataform.V1beta1.Model.ResetWorkspaceChangesResponse.t()}
           | {:ok, Tesla.Env.t()}
           | {:ok, list()}
           | {:error, any()}
@@ -4261,7 +4273,9 @@ defmodule GoogleApi.Dataform.V1beta1.Api.Projects do
 
     connection
     |> Connection.execute(request)
-    |> Response.decode(opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.Empty{}])
+    |> Response.decode(
+      opts ++ [struct: %GoogleApi.Dataform.V1beta1.Model.ResetWorkspaceChangesResponse{}]
+    )
   end
 
   @doc """

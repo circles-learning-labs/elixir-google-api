@@ -22,15 +22,18 @@ defmodule GoogleApi.AlloyDB.V1.Model.PscConfig do
   ## Attributes
 
   *   `pscEnabled` (*type:* `boolean()`, *default:* `nil`) - Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+  *   `serviceOwnedProjectNumber` (*type:* `String.t`, *default:* `nil`) - Output only. The project number that needs to be allowlisted on the network attachment to enable outbound connectivity.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :pscEnabled => boolean() | nil
+          :pscEnabled => boolean() | nil,
+          :serviceOwnedProjectNumber => String.t() | nil
         }
 
   field(:pscEnabled)
+  field(:serviceOwnedProjectNumber)
 end
 
 defimpl Poison.Decoder, for: GoogleApi.AlloyDB.V1.Model.PscConfig do

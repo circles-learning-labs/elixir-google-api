@@ -21,11 +21,16 @@ defmodule GoogleApi.BigtableAdmin.V2.Model.GoogleBigtableAdminV2TypeBytesEncodin
 
   ## Attributes
 
+  *   `escapeNulls` (*type:* `boolean()`, *default:* `nil`) - If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value which only contains the null byte 0x00, has one more null byte appended.
   """
 
   use GoogleApi.Gax.ModelBase
 
-  @type t :: %__MODULE__{}
+  @type t :: %__MODULE__{
+          :escapeNulls => boolean() | nil
+        }
+
+  field(:escapeNulls)
 end
 
 defimpl Poison.Decoder,

@@ -18,7 +18,7 @@
 defmodule GoogleApi.Vault.Mixfile do
   use Mix.Project
 
-  @version "0.24.1"
+  @version "0.25.0"
 
   def project() do
     [
@@ -59,7 +59,7 @@ defmodule GoogleApi.Vault.Mixfile do
       licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => "https://github.com/googleapis/elixir-google-api/tree/master/clients/vault",
-        "Homepage" => "https://developers.google.com/vault"
+        "Homepage" => "https://developers.google.com/workspace/vault"
       }
     ]
   end

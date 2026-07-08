@@ -18,7 +18,7 @@
 defmodule GoogleApi.Meet.Mixfile do
   use Mix.Project
 
-  @version "0.3.1"
+  @version "0.4.0"
 
   def project() do
     [
@@ -59,7 +59,7 @@ defmodule GoogleApi.Meet.Mixfile do
       licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => "https://github.com/googleapis/elixir-google-api/tree/master/clients/meet",
-        "Homepage" => "https://developers.google.com/meet/api"
+        "Homepage" => "https://developers.google.com/workspace/meet/api"
       }
     ]
   end

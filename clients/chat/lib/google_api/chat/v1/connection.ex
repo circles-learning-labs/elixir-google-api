@@ -54,6 +54,12 @@ defmodule GoogleApi.Chat.V1.Connection do
       # Private Service: https://www.googleapis.com/auth/chat.bot
       "https://www.googleapis.com/auth/chat.bot",
 
+      # View, create, and delete custom emoji in Google Chat
+      "https://www.googleapis.com/auth/chat.customemojis",
+
+      # View custom emoji in Google Chat
+      "https://www.googleapis.com/auth/chat.customemojis.readonly",
+
       # Delete conversations and spaces and remove access to associated files in Google Chat
       "https://www.googleapis.com/auth/chat.delete",
 
@@ -69,22 +75,22 @@ defmodule GoogleApi.Chat.V1.Connection do
       # View members in Google Chat conversations.
       "https://www.googleapis.com/auth/chat.memberships.readonly",
 
-      # See, compose, send, update, and delete messages and their associated attachments, and add, see, and delete reactions to messages.
+      # See, compose, send, update, and delete messages as well as their message content; add, see, and delete reactions to messages.
       "https://www.googleapis.com/auth/chat.messages",
 
       # Compose and send messages in Google Chat
       "https://www.googleapis.com/auth/chat.messages.create",
 
-      # See, add, and delete reactions to messages in Google Chat
+      # See, add, and delete reactions as well as their reaction content to messages in Google Chat
       "https://www.googleapis.com/auth/chat.messages.reactions",
 
       # Add reactions to messages in Google Chat
       "https://www.googleapis.com/auth/chat.messages.reactions.create",
 
-      # View reactions to messages in Google Chat
+      # View reactions as well as their reaction content to messages in Google Chat
       "https://www.googleapis.com/auth/chat.messages.reactions.readonly",
 
-      # See messages and their associated reactions and attachments in Google Chat
+      # See messages as well as their reactions and message content in Google Chat
       "https://www.googleapis.com/auth/chat.messages.readonly",
 
       # Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat
@@ -100,7 +106,10 @@ defmodule GoogleApi.Chat.V1.Connection do
       "https://www.googleapis.com/auth/chat.users.readstate",
 
       # View last read time for Google Chat conversations
-      "https://www.googleapis.com/auth/chat.users.readstate.readonly"
+      "https://www.googleapis.com/auth/chat.users.readstate.readonly",
+
+      # Read and update your space settings
+      "https://www.googleapis.com/auth/chat.users.spacesettings"
     ],
     otp_app: :google_api_chat,
     base_url: "https://chat.googleapis.com/"

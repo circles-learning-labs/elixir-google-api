@@ -21,11 +21,13 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alp
 
   ## Attributes
 
+  *   `deletedRecordCount` (*type:* `String.t`, *default:* `nil`) - The number of documents deleted.
   *   `entityName` (*type:* `String.t`, *default:* `nil`) - The name of the source entity.
   *   `errorRecordCount` (*type:* `String.t`, *default:* `nil`) - The total number of documents failed at sync at any stage (extraction, indexing, etc).
   *   `errors` (*type:* `list(GoogleApi.DiscoveryEngine.V1beta.Model.GoogleRpcStatus.t)`, *default:* `nil`) - The errors from the entity's sync run. Only exist if running into an error state. Contains error code and error message.
   *   `extractedRecordCount` (*type:* `String.t`, *default:* `nil`) - The number of documents extracted from connector source, ready to be ingested to UCS.
   *   `indexedRecordCount` (*type:* `String.t`, *default:* `nil`) - The number of documents indexed.
+  *   `progress` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress.t`, *default:* `nil`) - Metadata to generate the progress bar.
   *   `sourceApiRequestCount` (*type:* `String.t`, *default:* `nil`) - The number of requests sent to 3p API.
   *   `state` (*type:* `String.t`, *default:* `nil`) - The state of the entity's sync run.
   *   `stateUpdateTime` (*type:* `DateTime.t`, *default:* `nil`) - Timestamp at which the entity sync state was last updated.
@@ -36,11 +38,15 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alp
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :deletedRecordCount => String.t() | nil,
           :entityName => String.t() | nil,
           :errorRecordCount => String.t() | nil,
           :errors => list(GoogleApi.DiscoveryEngine.V1beta.Model.GoogleRpcStatus.t()) | nil,
           :extractedRecordCount => String.t() | nil,
           :indexedRecordCount => String.t() | nil,
+          :progress =>
+            GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress.t()
+            | nil,
           :sourceApiRequestCount => String.t() | nil,
           :state => String.t() | nil,
           :stateUpdateTime => DateTime.t() | nil,
@@ -48,11 +54,18 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alp
           :syncType => String.t() | nil
         }
 
+  field(:deletedRecordCount)
   field(:entityName)
   field(:errorRecordCount)
   field(:errors, as: GoogleApi.DiscoveryEngine.V1beta.Model.GoogleRpcStatus, type: :list)
   field(:extractedRecordCount)
   field(:indexedRecordCount)
+
+  field(:progress,
+    as:
+      GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress
+  )
+
   field(:sourceApiRequestCount)
   field(:state)
   field(:stateUpdateTime, as: DateTime)

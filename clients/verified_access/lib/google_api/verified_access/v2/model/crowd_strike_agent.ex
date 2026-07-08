@@ -21,8 +21,8 @@ defmodule GoogleApi.VerifiedAccess.V2.Model.CrowdStrikeAgent do
 
   ## Attributes
 
-  *   `agentId` (*type:* `String.t`, *default:* `nil`) - The Agent ID of the Crowdstrike agent.
-  *   `customerId` (*type:* `String.t`, *default:* `nil`) - The Customer ID to which the agent belongs to.
+  *   `agentId` (*type:* `String.t`, *default:* `nil`) - Output only. The Agent ID of the Crowdstrike agent.
+  *   `customerId` (*type:* `String.t`, *default:* `nil`) - Output only. The Customer ID to which the agent belongs to.
   """
 
   use GoogleApi.Gax.ModelBase

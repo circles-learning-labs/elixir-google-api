@@ -25,8 +25,11 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.ConnectSettings do
   *   `customSubjectAlternativeNames` (*type:* `list(String.t)`, *default:* `nil`) - Custom subject alternative names for the server certificate.
   *   `databaseVersion` (*type:* `String.t`, *default:* `nil`) - The database engine type and version. The `databaseVersion` field cannot be changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server instances: `SQLSERVER_2017_STANDARD` (default), `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`.
   *   `dnsName` (*type:* `String.t`, *default:* `nil`) - The dns name of the instance.
+  *   `dnsNames` (*type:* `list(GoogleApi.SQLAdmin.V1beta4.Model.DnsNameMapping.t)`, *default:* `nil`) - Output only. The list of DNS names used by this instance.
   *   `ipAddresses` (*type:* `list(GoogleApi.SQLAdmin.V1beta4.Model.IpMapping.t)`, *default:* `nil`) - The assigned IP addresses for the instance.
   *   `kind` (*type:* `String.t`, *default:* `nil`) - This is always `sql#connectSettings`.
+  *   `nodeCount` (*type:* `integer()`, *default:* `nil`) - The number of nodes in a read pool.
+  *   `nodes` (*type:* `list(GoogleApi.SQLAdmin.V1beta4.Model.ConnectPoolNodeConfig.t)`, *default:* `nil`) - Output only. Entries containing information about each node of the read pool.
   *   `pscEnabled` (*type:* `boolean()`, *default:* `nil`) - Whether PSC connectivity is enabled for this instance.
   *   `region` (*type:* `String.t`, *default:* `nil`) - The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after instance creation.
   *   `serverCaCert` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.SslCert.t`, *default:* `nil`) - SSL configuration.
@@ -40,8 +43,11 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.ConnectSettings do
           :customSubjectAlternativeNames => list(String.t()) | nil,
           :databaseVersion => String.t() | nil,
           :dnsName => String.t() | nil,
+          :dnsNames => list(GoogleApi.SQLAdmin.V1beta4.Model.DnsNameMapping.t()) | nil,
           :ipAddresses => list(GoogleApi.SQLAdmin.V1beta4.Model.IpMapping.t()) | nil,
           :kind => String.t() | nil,
+          :nodeCount => integer() | nil,
+          :nodes => list(GoogleApi.SQLAdmin.V1beta4.Model.ConnectPoolNodeConfig.t()) | nil,
           :pscEnabled => boolean() | nil,
           :region => String.t() | nil,
           :serverCaCert => GoogleApi.SQLAdmin.V1beta4.Model.SslCert.t() | nil,
@@ -52,8 +58,11 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.ConnectSettings do
   field(:customSubjectAlternativeNames, type: :list)
   field(:databaseVersion)
   field(:dnsName)
+  field(:dnsNames, as: GoogleApi.SQLAdmin.V1beta4.Model.DnsNameMapping, type: :list)
   field(:ipAddresses, as: GoogleApi.SQLAdmin.V1beta4.Model.IpMapping, type: :list)
   field(:kind)
+  field(:nodeCount)
+  field(:nodes, as: GoogleApi.SQLAdmin.V1beta4.Model.ConnectPoolNodeConfig, type: :list)
   field(:pscEnabled)
   field(:region)
   field(:serverCaCert, as: GoogleApi.SQLAdmin.V1beta4.Model.SslCert)

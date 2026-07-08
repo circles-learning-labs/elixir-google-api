@@ -24,9 +24,10 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2InfoTypeDescription do
   *   `categories` (*type:* `list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2InfoTypeCategory.t)`, *default:* `nil`) - The category of the infoType.
   *   `description` (*type:* `String.t`, *default:* `nil`) - Description of the infotype. Translated when language is provided in the request.
   *   `displayName` (*type:* `String.t`, *default:* `nil`) - Human readable form of the infoType name.
-  *   `example` (*type:* `String.t`, *default:* `nil`) - A sample true positive for this infoType.
+  *   `example` (*type:* `String.t`, *default:* `nil`) - A sample that is a true positive for this infoType.
   *   `name` (*type:* `String.t`, *default:* `nil`) - Internal name of the infoType.
   *   `sensitivityScore` (*type:* `GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore.t`, *default:* `nil`) - The default sensitivity of the infoType.
+  *   `specificInfoTypes` (*type:* `list(String.t)`, *default:* `nil`) - If this field is set, this infoType is a general infoType and these specific infoTypes are contained within it. General infoTypes are infoTypes that encompass multiple specific infoTypes. For example, the "GEOGRAPHIC_DATA" general infoType would have set for this field "LOCATION", "LOCATION_COORDINATES", and "STREET_ADDRESS".
   *   `supportedBy` (*type:* `list(String.t)`, *default:* `nil`) - Which parts of the API supports this InfoType.
   *   `versions` (*type:* `list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2VersionDescription.t)`, *default:* `nil`) - A list of available versions for the infotype.
   """
@@ -42,6 +43,7 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2InfoTypeDescription do
           :name => String.t() | nil,
           :sensitivityScore =>
             GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore.t() | nil,
+          :specificInfoTypes => list(String.t()) | nil,
           :supportedBy => list(String.t()) | nil,
           :versions => list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2VersionDescription.t()) | nil
         }
@@ -52,6 +54,7 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2InfoTypeDescription do
   field(:example)
   field(:name)
   field(:sensitivityScore, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore)
+  field(:specificInfoTypes, type: :list)
   field(:supportedBy, type: :list)
   field(:versions, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2VersionDescription, type: :list)
 end

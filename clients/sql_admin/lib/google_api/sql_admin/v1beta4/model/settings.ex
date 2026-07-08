@@ -37,7 +37,10 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
   *   `availabilityType` (*type:* `String.t`, *default:* `nil`) - Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
   *   `insightsConfig` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.InsightsConfig.t`, *default:* `nil`) - Insights configuration, for now relevant only for Postgres.
   *   `dataDiskSizeGb` (*type:* `String.t`, *default:* `nil`) - The size of data disk, in GB. The data disk size minimum is 10GB.
+  *   `retainBackupsOnDelete` (*type:* `boolean()`, *default:* `nil`) - Optional. When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
   *   `backupConfiguration` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.BackupConfiguration.t`, *default:* `nil`) - The daily backup configuration for the instance.
+  *   `dataDiskProvisionedThroughput` (*type:* `String.t`, *default:* `nil`) - Optional. Provisioned throughput measured in MiB per second for the data disk. This field is only used for hyperdisk-balanced disk types.
+  *   `dataDiskProvisionedIops` (*type:* `String.t`, *default:* `nil`) - Optional. Provisioned number of I/O operations per second for the data disk. This field is only used for hyperdisk-balanced disk types.
   *   `authorizedGaeApplications` (*type:* `list(String.t)`, *default:* `nil`) - The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
   *   `edition` (*type:* `String.t`, *default:* `nil`) - Optional. The edition of the instance.
   *   `dataDiskType` (*type:* `String.t`, *default:* `nil`) - The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -45,7 +48,9 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
   *   `storageAutoResizeLimit` (*type:* `String.t`, *default:* `nil`) - The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
   *   `collation` (*type:* `String.t`, *default:* `nil`) - The name of server Instance collation.
   *   `tier` (*type:* `String.t`, *default:* `nil`) - The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
+  *   `replicationLagMaxSeconds` (*type:* `integer()`, *default:* `nil`) - Optional. Configuration value for recreation of replica after certain replication lag
   *   `locationPreference` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.LocationPreference.t`, *default:* `nil`) - The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
+  *   `connectionPoolConfig` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.ConnectionPoolConfig.t`, *default:* `nil`) - Optional. The managed connection pooling configuration for the instance.
   *   `storageAutoResize` (*type:* `boolean()`, *default:* `nil`) - Configuration to increase storage size automatically. The default value is true.
   *   `timeZone` (*type:* `String.t`, *default:* `nil`) - Server timezone, relevant only for Cloud SQL for SQL Server.
   *   `sqlServerAuditConfig` (*type:* `GoogleApi.SQLAdmin.V1beta4.Model.SqlServerAuditConfig.t`, *default:* `nil`) - SQL Server specific audit configuration.
@@ -78,7 +83,10 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
           :availabilityType => String.t() | nil,
           :insightsConfig => GoogleApi.SQLAdmin.V1beta4.Model.InsightsConfig.t() | nil,
           :dataDiskSizeGb => String.t() | nil,
+          :retainBackupsOnDelete => boolean() | nil,
           :backupConfiguration => GoogleApi.SQLAdmin.V1beta4.Model.BackupConfiguration.t() | nil,
+          :dataDiskProvisionedThroughput => String.t() | nil,
+          :dataDiskProvisionedIops => String.t() | nil,
           :authorizedGaeApplications => list(String.t()) | nil,
           :edition => String.t() | nil,
           :dataDiskType => String.t() | nil,
@@ -86,7 +94,10 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
           :storageAutoResizeLimit => String.t() | nil,
           :collation => String.t() | nil,
           :tier => String.t() | nil,
+          :replicationLagMaxSeconds => integer() | nil,
           :locationPreference => GoogleApi.SQLAdmin.V1beta4.Model.LocationPreference.t() | nil,
+          :connectionPoolConfig =>
+            GoogleApi.SQLAdmin.V1beta4.Model.ConnectionPoolConfig.t() | nil,
           :storageAutoResize => boolean() | nil,
           :timeZone => String.t() | nil,
           :sqlServerAuditConfig =>
@@ -122,7 +133,10 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
   field(:availabilityType)
   field(:insightsConfig, as: GoogleApi.SQLAdmin.V1beta4.Model.InsightsConfig)
   field(:dataDiskSizeGb)
+  field(:retainBackupsOnDelete)
   field(:backupConfiguration, as: GoogleApi.SQLAdmin.V1beta4.Model.BackupConfiguration)
+  field(:dataDiskProvisionedThroughput)
+  field(:dataDiskProvisionedIops)
   field(:authorizedGaeApplications, type: :list)
   field(:edition)
   field(:dataDiskType)
@@ -130,7 +144,9 @@ defmodule GoogleApi.SQLAdmin.V1beta4.Model.Settings do
   field(:storageAutoResizeLimit)
   field(:collation)
   field(:tier)
+  field(:replicationLagMaxSeconds)
   field(:locationPreference, as: GoogleApi.SQLAdmin.V1beta4.Model.LocationPreference)
+  field(:connectionPoolConfig, as: GoogleApi.SQLAdmin.V1beta4.Model.ConnectionPoolConfig)
   field(:storageAutoResize)
   field(:timeZone)
   field(:sqlServerAuditConfig, as: GoogleApi.SQLAdmin.V1beta4.Model.SqlServerAuditConfig)

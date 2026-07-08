@@ -40,11 +40,11 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
   *   `takeout` (*type:* `boolean()`, *default:* `nil`) - Specifies if the business supports takeout.
   *   `paymentOptions` (*type:* `GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlacePaymentOptions.t`, *default:* `nil`) - Payment options the place accepts. If a payment option data is not available, the payment option field will be unset.
   *   `pureServiceAreaBusiness` (*type:* `boolean()`, *default:* `nil`) - Indicates whether the place is a pure service area business. Pure service area business is a business that visits or delivers to customers directly but does not serve customers at their business address. For example, businesses like cleaning services or plumbers. Those businesses may not have a physical address or location on Google Maps.
-  *   `regularOpeningHours` (*type:* `GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceOpeningHours.t`, *default:* `nil`) - The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not be set. Clients can rely on always open (24 hours) being represented as an `open` period containing `day` with value `0`, `hour` with value `0`, and `minute` with value `0`.
+  *   `regularOpeningHours` (*type:* `GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceOpeningHours.t`, *default:* `nil`) - The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not be set. Clients can rely on always open (24 hours) being represented as an [`open`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Period) period containing [`day`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point) with value `0`, [`hour`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point) with value `0`, and [`minute`](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#Point) with value `0`.
   *   `shortFormattedAddress` (*type:* `String.t`, *default:* `nil`) - A short, human-readable address for this place.
   *   `internationalPhoneNumber` (*type:* `String.t`, *default:* `nil`) - A human-readable phone number for the place, in international format.
   *   `servesBeer` (*type:* `boolean()`, *default:* `nil`) - Specifies if the place serves beer.
-  *   `subDestinations` (*type:* `list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceSubDestination.t)`, *default:* `nil`) - A list of sub destinations related to the place.
+  *   `subDestinations` (*type:* `list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceSubDestination.t)`, *default:* `nil`) - A list of sub-destinations related to the place.
   *   `editorialSummary` (*type:* `GoogleApi.Places.V1.Model.GoogleTypeLocalizedText.t`, *default:* `nil`) - Contains a summary of the place. A summary is comprised of a textual overview, and also includes the language code for these if applicable. Summary text must be presented as-is and can not be modified or altered.
   *   `googleMapsUri` (*type:* `String.t`, *default:* `nil`) - A URL providing more information about this place.
   *   `areaSummary` (*type:* `GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceAreaSummary.t`, *default:* `nil`) - Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. AI-generated summary of the area that the place is in.
@@ -64,6 +64,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
   *   `utcOffsetMinutes` (*type:* `integer()`, *default:* `nil`) - Number of minutes this place's timezone is currently offset from UTC. This is expressed in minutes to support timezones that are offset by fractions of an hour, e.g. X hours and 15 minutes.
   *   `businessStatus` (*type:* `String.t`, *default:* `nil`) - The business status for the place.
   *   `menuForChildren` (*type:* `boolean()`, *default:* `nil`) - Place has a children's menu.
+  *   `postalAddress` (*type:* `GoogleApi.Places.V1.Model.GoogleTypePostalAddress.t`, *default:* `nil`) - The address in postal address format.
   *   `regularSecondaryOpeningHours` (*type:* `list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceOpeningHours.t)`, *default:* `nil`) - Contains an array of entries for information about regular secondary hours of a business. Secondary hours are different from a business's main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours. This field populates the type subfield, which draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
   *   `curbsidePickup` (*type:* `boolean()`, *default:* `nil`) - Specifies if the business supports curbside pickup.
   *   `evChargeOptions` (*type:* `GoogleApi.Places.V1.Model.GoogleMapsPlacesV1EVChargeOptions.t`, *default:* `nil`) - Information of ev charging options.
@@ -75,6 +76,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
   *   `formattedAddress` (*type:* `String.t`, *default:* `nil`) - A full, human-readable address for this place.
   *   `photos` (*type:* `list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Photo.t)`, *default:* `nil`) - Information (including references) about photos of this place. A maximum of 10 photos can be returned.
   *   `reservable` (*type:* `boolean()`, *default:* `nil`) - Specifies if the place supports reservations.
+  *   `timeZone` (*type:* `GoogleApi.Places.V1.Model.GoogleTypeTimeZone.t`, *default:* `nil`) - IANA Time Zone Database time zone. For example "America/New_York".
   *   `iconMaskBaseUri` (*type:* `String.t`, *default:* `nil`) - A truncated URL to an icon mask. User can access different icon type by appending type suffix to the end (eg, ".svg" or ".png").
   *   `servesDinner` (*type:* `boolean()`, *default:* `nil`) - Specifies if the place serves dinner.
   *   `primaryType` (*type:* `String.t`, *default:* `nil`) - The primary type of the given result. This type must one of the Places API supported types. For example, "restaurant", "cafe", "airport", etc. A place can only have a single primary type. For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types
@@ -145,6 +147,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
           :utcOffsetMinutes => integer() | nil,
           :businessStatus => String.t() | nil,
           :menuForChildren => boolean() | nil,
+          :postalAddress => GoogleApi.Places.V1.Model.GoogleTypePostalAddress.t() | nil,
           :regularSecondaryOpeningHours =>
             list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceOpeningHours.t()) | nil,
           :curbsidePickup => boolean() | nil,
@@ -159,6 +162,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
           :formattedAddress => String.t() | nil,
           :photos => list(GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Photo.t()) | nil,
           :reservable => boolean() | nil,
+          :timeZone => GoogleApi.Places.V1.Model.GoogleTypeTimeZone.t() | nil,
           :iconMaskBaseUri => String.t() | nil,
           :servesDinner => boolean() | nil,
           :primaryType => String.t() | nil,
@@ -244,6 +248,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
   field(:utcOffsetMinutes)
   field(:businessStatus)
   field(:menuForChildren)
+  field(:postalAddress, as: GoogleApi.Places.V1.Model.GoogleTypePostalAddress)
 
   field(:regularSecondaryOpeningHours,
     as: GoogleApi.Places.V1.Model.GoogleMapsPlacesV1PlaceOpeningHours,
@@ -260,6 +265,7 @@ defmodule GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Place do
   field(:formattedAddress)
   field(:photos, as: GoogleApi.Places.V1.Model.GoogleMapsPlacesV1Photo, type: :list)
   field(:reservable)
+  field(:timeZone, as: GoogleApi.Places.V1.Model.GoogleTypeTimeZone)
   field(:iconMaskBaseUri)
   field(:servesDinner)
   field(:primaryType)

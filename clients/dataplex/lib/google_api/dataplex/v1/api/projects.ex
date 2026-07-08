@@ -106,6 +106,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
+      *   `:extraLocationTypes` (*type:* `list(String.t)`) - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
       *   `:filter` (*type:* `String.t`) - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
       *   `:pageSize` (*type:* `integer()`) - The maximum number of results to return. If not set, the service selects a default.
       *   `:pageToken` (*type:* `String.t`) - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
@@ -134,6 +135,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
       :quotaUser => :query,
       :uploadType => :query,
       :upload_protocol => :query,
+      :extraLocationTypes => :query,
       :filter => :query,
       :pageSize => :query,
       :pageToken => :query
@@ -156,7 +158,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
   end
 
   @doc """
-  Looks up a single Entry by name using the permission on the source system.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+  Looks up an entry by name using the permission on the source system.
 
   ## Parameters
 
@@ -254,7 +256,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
-      *   `:orderBy` (*type:* `String.t`) - Optional. Specifies the ordering of results. Supported values are: * relevance (default) * last_modified_timestamp * last_modified_timestamp asc
+      *   `:orderBy` (*type:* `String.t`) - Optional. Specifies the ordering of results. Supported values are: relevance (default) last_modified_timestamp last_modified_timestamp asc
       *   `:pageSize` (*type:* `integer()`) - Optional. Number of results in the search page. If <=0, then defaults to 10. Max limit for page_size is 1000. Throws an invalid argument for page_size > 1000.
       *   `:pageToken` (*type:* `String.t`) - Optional. Page token received from a previous SearchEntries call. Provide this to retrieve the subsequent page.
       *   `:query` (*type:* `String.t`) - Required. The query against which entries in scope should be matched. The query syntax is defined in Search syntax for Dataplex Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
@@ -2516,7 +2518,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
   ## Parameters
 
   *   `connection` (*type:* `GoogleApi.Dataplex.V1.Connection.t`) - Connection to server
-  *   `parent` (*type:* `String.t`) - Required. The resource name of the data taxonomy location, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+  *   `parent` (*type:* `String.t`) - 
   *   `optional_params` (*type:* `keyword()`) - Optional parameters
       *   `:"$.xgafv"` (*type:* `String.t`) - V1 error format.
       *   `:access_token` (*type:* `String.t`) - OAuth access token.
@@ -2668,7 +2670,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
   ## Parameters
 
   *   `connection` (*type:* `GoogleApi.Dataplex.V1.Connection.t`) - Connection to server
-  *   `name` (*type:* `String.t`) - Required. The resource name of the DataTaxonomy: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
+  *   `name` (*type:* `String.t`) - 
   *   `optional_params` (*type:* `keyword()`) - Optional parameters
       *   `:"$.xgafv"` (*type:* `String.t`) - V1 error format.
       *   `:access_token` (*type:* `String.t`) - OAuth access token.
@@ -4462,7 +4464,7 @@ defmodule GoogleApi.Dataplex.V1.Api.Projects do
   end
 
   @doc """
-  Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+  Gets an Entry.
 
   ## Parameters
 

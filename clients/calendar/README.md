@@ -11,13 +11,13 @@ Install this package from [Hex](https://hex.pm) by adding
 
 ```elixir
 def deps do
-  [{:google_api_calendar, "~> 0.25"}]
+  [{:google_api_calendar, "~> 0.26"}]
 end
 ```
 
 ## For more information
 
-Product documentation is available at [https://developers.google.com/google-apps/calendar/firstapp](https://developers.google.com/google-apps/calendar/firstapp).
+Product documentation is available at [https://developers.google.com/workspace/calendar/firstapp](https://developers.google.com/workspace/calendar/firstapp).
 
 Library reference documentation is published on Hexdocs at
 [https://hexdocs.pm/google_api_calendar](https://hexdocs.pm/google_api_calendar).

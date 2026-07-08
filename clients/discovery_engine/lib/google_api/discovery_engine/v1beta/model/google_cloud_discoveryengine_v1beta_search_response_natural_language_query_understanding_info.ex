@@ -21,23 +21,35 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1bet
 
   ## Attributes
 
+  *   `classifiedIntents` (*type:* `list(String.t)`, *default:* `nil`) - The classified intents from the input query.
   *   `extractedFilters` (*type:* `String.t`, *default:* `nil`) - The filters that were extracted from the input query.
   *   `rewrittenQuery` (*type:* `String.t`, *default:* `nil`) - Rewritten input query minus the extracted filters.
+  *   `sqlRequest` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest.t`, *default:* `nil`) - Optional. The SQL request that was generated from the natural language query understanding phase.
   *   `structuredExtractedFilter` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter.t`, *default:* `nil`) - The filters that were extracted from the input query represented in a structured form.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :classifiedIntents => list(String.t()) | nil,
           :extractedFilters => String.t() | nil,
           :rewrittenQuery => String.t() | nil,
+          :sqlRequest =>
+            GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest.t()
+            | nil,
           :structuredExtractedFilter =>
             GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter.t()
             | nil
         }
 
+  field(:classifiedIntents, type: :list)
   field(:extractedFilters)
   field(:rewrittenQuery)
+
+  field(:sqlRequest,
+    as:
+      GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
+  )
 
   field(:structuredExtractedFilter,
     as:

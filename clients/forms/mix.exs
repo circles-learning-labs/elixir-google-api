@@ -18,7 +18,7 @@
 defmodule GoogleApi.Forms.Mixfile do
   use Mix.Project
 
-  @version "0.4.0"
+  @version "0.5.0"
 
   def project() do
     [
@@ -59,7 +59,7 @@ defmodule GoogleApi.Forms.Mixfile do
       licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => "https://github.com/googleapis/elixir-google-api/tree/master/clients/forms",
-        "Homepage" => "https://developers.google.com/forms/api"
+        "Homepage" => "https://developers.google.com/workspace/forms/api"
       }
     ]
   end

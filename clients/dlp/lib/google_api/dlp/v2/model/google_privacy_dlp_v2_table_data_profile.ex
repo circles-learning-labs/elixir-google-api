@@ -39,14 +39,17 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2TableDataProfile do
   *   `profileLastGenerated` (*type:* `DateTime.t`, *default:* `nil`) - The last time the profile was generated.
   *   `profileStatus` (*type:* `GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2ProfileStatus.t`, *default:* `nil`) - Success or error status from the most recent profile generation attempt. May be empty if the profile is still being generated.
   *   `projectDataProfile` (*type:* `String.t`, *default:* `nil`) - The resource name of the project data profile for this table.
+  *   `relatedResources` (*type:* `list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2RelatedResource.t)`, *default:* `nil`) - Resources related to this profile.
   *   `resourceLabels` (*type:* `map()`, *default:* `nil`) - The labels applied to the resource at the time the profile was generated.
   *   `resourceVisibility` (*type:* `String.t`, *default:* `nil`) - How broadly a resource has been shared.
   *   `rowCount` (*type:* `String.t`, *default:* `nil`) - Number of rows in the table when the profile was generated. This will not be populated for BigLake tables.
+  *   `sampleFindingsTable` (*type:* `GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2BigQueryTable.t`, *default:* `nil`) - The BigQuery table to which the sample findings are written.
   *   `scannedColumnCount` (*type:* `String.t`, *default:* `nil`) - The number of columns profiled in the table.
   *   `sensitivityScore` (*type:* `GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore.t`, *default:* `nil`) - The sensitivity score of this table.
   *   `state` (*type:* `String.t`, *default:* `nil`) - State of a profile.
   *   `tableId` (*type:* `String.t`, *default:* `nil`) - The table ID.
   *   `tableSizeBytes` (*type:* `String.t`, *default:* `nil`) - The size of the table when the profile was generated.
+  *   `tags` (*type:* `list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2Tag.t)`, *default:* `nil`) - The tags attached to the table, including any tags attached during profiling. Because tags are attached to Cloud SQL instances rather than Cloud SQL tables, this field is empty for Cloud SQL table profiles.
   """
 
   use GoogleApi.Gax.ModelBase
@@ -73,15 +76,20 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2TableDataProfile do
           :profileLastGenerated => DateTime.t() | nil,
           :profileStatus => GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2ProfileStatus.t() | nil,
           :projectDataProfile => String.t() | nil,
+          :relatedResources =>
+            list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2RelatedResource.t()) | nil,
           :resourceLabels => map() | nil,
           :resourceVisibility => String.t() | nil,
           :rowCount => String.t() | nil,
+          :sampleFindingsTable =>
+            GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2BigQueryTable.t() | nil,
           :scannedColumnCount => String.t() | nil,
           :sensitivityScore =>
             GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore.t() | nil,
           :state => String.t() | nil,
           :tableId => String.t() | nil,
-          :tableSizeBytes => String.t() | nil
+          :tableSizeBytes => String.t() | nil,
+          :tags => list(GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2Tag.t()) | nil
         }
 
   field(:configSnapshot, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2DataProfileConfigSnapshot)
@@ -111,14 +119,22 @@ defmodule GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2TableDataProfile do
   field(:profileLastGenerated, as: DateTime)
   field(:profileStatus, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2ProfileStatus)
   field(:projectDataProfile)
+
+  field(:relatedResources,
+    as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2RelatedResource,
+    type: :list
+  )
+
   field(:resourceLabels, type: :map)
   field(:resourceVisibility)
   field(:rowCount)
+  field(:sampleFindingsTable, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2BigQueryTable)
   field(:scannedColumnCount)
   field(:sensitivityScore, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2SensitivityScore)
   field(:state)
   field(:tableId)
   field(:tableSizeBytes)
+  field(:tags, as: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2Tag, type: :list)
 end
 
 defimpl Poison.Decoder, for: GoogleApi.DLP.V2.Model.GooglePrivacyDlpV2TableDataProfile do

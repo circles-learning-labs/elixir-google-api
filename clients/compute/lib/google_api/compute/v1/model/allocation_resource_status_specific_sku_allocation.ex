@@ -22,15 +22,18 @@ defmodule GoogleApi.Compute.V1.Model.AllocationResourceStatusSpecificSKUAllocati
   ## Attributes
 
   *   `sourceInstanceTemplateId` (*type:* `String.t`, *default:* `nil`) - ID of the instance template used to populate reservation properties.
+  *   `utilizations` (*type:* `map()`, *default:* `nil`) - Per service utilization breakdown. The Key is the Google Cloud managed service name.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :sourceInstanceTemplateId => String.t() | nil
+          :sourceInstanceTemplateId => String.t() | nil,
+          :utilizations => map() | nil
         }
 
   field(:sourceInstanceTemplateId)
+  field(:utilizations, type: :map)
 end
 
 defimpl Poison.Decoder,

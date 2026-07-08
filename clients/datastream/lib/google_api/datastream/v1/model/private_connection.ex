@@ -26,6 +26,9 @@ defmodule GoogleApi.Datastream.V1.Model.PrivateConnection do
   *   `error` (*type:* `GoogleApi.Datastream.V1.Model.Error.t`, *default:* `nil`) - Output only. In case of error, the details of the error in a user-friendly format.
   *   `labels` (*type:* `map()`, *default:* `nil`) - Labels.
   *   `name` (*type:* `String.t`, *default:* `nil`) - Output only. Identifier. The resource's name.
+  *   `pscInterfaceConfig` (*type:* `GoogleApi.Datastream.V1.Model.PscInterfaceConfig.t`, *default:* `nil`) - PSC Interface Config.
+  *   `satisfiesPzi` (*type:* `boolean()`, *default:* `nil`) - Output only. Reserved for future use.
+  *   `satisfiesPzs` (*type:* `boolean()`, *default:* `nil`) - Output only. Reserved for future use.
   *   `state` (*type:* `String.t`, *default:* `nil`) - Output only. The state of the Private Connection.
   *   `updateTime` (*type:* `DateTime.t`, *default:* `nil`) - Output only. The update time of the resource.
   *   `vpcPeeringConfig` (*type:* `GoogleApi.Datastream.V1.Model.VpcPeeringConfig.t`, *default:* `nil`) - VPC Peering Config.
@@ -39,6 +42,9 @@ defmodule GoogleApi.Datastream.V1.Model.PrivateConnection do
           :error => GoogleApi.Datastream.V1.Model.Error.t() | nil,
           :labels => map() | nil,
           :name => String.t() | nil,
+          :pscInterfaceConfig => GoogleApi.Datastream.V1.Model.PscInterfaceConfig.t() | nil,
+          :satisfiesPzi => boolean() | nil,
+          :satisfiesPzs => boolean() | nil,
           :state => String.t() | nil,
           :updateTime => DateTime.t() | nil,
           :vpcPeeringConfig => GoogleApi.Datastream.V1.Model.VpcPeeringConfig.t() | nil
@@ -49,6 +55,9 @@ defmodule GoogleApi.Datastream.V1.Model.PrivateConnection do
   field(:error, as: GoogleApi.Datastream.V1.Model.Error)
   field(:labels, type: :map)
   field(:name)
+  field(:pscInterfaceConfig, as: GoogleApi.Datastream.V1.Model.PscInterfaceConfig)
+  field(:satisfiesPzi)
+  field(:satisfiesPzs)
   field(:state)
   field(:updateTime, as: DateTime)
   field(:vpcPeeringConfig, as: GoogleApi.Datastream.V1.Model.VpcPeeringConfig)

@@ -21,16 +21,19 @@ defmodule GoogleApi.Dataplex.V1.Model.GoogleCloudDataplexV1DataDiscoveryResultBi
 
   ## Attributes
 
-  *   `dataset` (*type:* `String.t`, *default:* `nil`) - Output only. The BigQuery dataset to publish to. It takes the form projects/{project_id}/datasets/{dataset_id}. If not set, the service creates a default publishing dataset.
+  *   `dataset` (*type:* `String.t`, *default:* `nil`) - Output only. The BigQuery dataset the discovered tables are published to.
+  *   `location` (*type:* `String.t`, *default:* `nil`) - Output only. The location of the BigQuery publishing dataset.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :dataset => String.t() | nil
+          :dataset => String.t() | nil,
+          :location => String.t() | nil
         }
 
   field(:dataset)
+  field(:location)
 end
 
 defimpl Poison.Decoder,

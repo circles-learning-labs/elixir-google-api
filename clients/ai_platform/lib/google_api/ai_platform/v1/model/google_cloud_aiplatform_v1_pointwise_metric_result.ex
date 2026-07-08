@@ -21,6 +21,7 @@ defmodule GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1PointwiseMetricRe
 
   ## Attributes
 
+  *   `customOutput` (*type:* `GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1CustomOutput.t`, *default:* `nil`) - Output only. Spec for custom output.
   *   `explanation` (*type:* `String.t`, *default:* `nil`) - Output only. Explanation for pointwise metric score.
   *   `score` (*type:* `number()`, *default:* `nil`) - Output only. Pointwise metric score.
   """
@@ -28,10 +29,13 @@ defmodule GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1PointwiseMetricRe
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :customOutput =>
+            GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1CustomOutput.t() | nil,
           :explanation => String.t() | nil,
           :score => number() | nil
         }
 
+  field(:customOutput, as: GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1CustomOutput)
   field(:explanation)
   field(:score)
 end

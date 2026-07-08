@@ -178,6 +178,7 @@ defmodule GoogleApi.Datastream.V1.Api.Projects do
       *   `:quotaUser` (*type:* `String.t`) - Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
       *   `:uploadType` (*type:* `String.t`) - Legacy upload protocol for media (e.g. "media", "multipart").
       *   `:upload_protocol` (*type:* `String.t`) - Upload protocol for media (e.g. "raw", "multipart").
+      *   `:extraLocationTypes` (*type:* `list(String.t)`) - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
       *   `:filter` (*type:* `String.t`) - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
       *   `:pageSize` (*type:* `integer()`) - The maximum number of results to return. If not set, the service selects a default.
       *   `:pageToken` (*type:* `String.t`) - A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.
@@ -206,6 +207,7 @@ defmodule GoogleApi.Datastream.V1.Api.Projects do
       :quotaUser => :query,
       :uploadType => :query,
       :upload_protocol => :query,
+      :extraLocationTypes => :query,
       :filter => :query,
       :pageSize => :query,
       :pageToken => :query
@@ -991,6 +993,7 @@ defmodule GoogleApi.Datastream.V1.Api.Projects do
       *   `:force` (*type:* `boolean()`) - Optional. If set to true, will skip validations.
       *   `:privateConnectionId` (*type:* `String.t`) - Required. The private connectivity identifier.
       *   `:requestId` (*type:* `String.t`) - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+      *   `:validateOnly` (*type:* `boolean()`) - Optional. When supplied with PSC Interface config, will get/create the tenant project required for the customer to allow list and won't actually create the private connection.
       *   `:body` (*type:* `GoogleApi.Datastream.V1.Model.PrivateConnection.t`) - 
   *   `opts` (*type:* `keyword()`) - Call options
 
@@ -1030,6 +1033,7 @@ defmodule GoogleApi.Datastream.V1.Api.Projects do
       :force => :query,
       :privateConnectionId => :query,
       :requestId => :query,
+      :validateOnly => :query,
       :body => :body
     }
 

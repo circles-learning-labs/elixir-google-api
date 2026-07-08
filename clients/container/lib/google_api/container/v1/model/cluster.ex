@@ -28,11 +28,11 @@ defmodule GoogleApi.Container.V1.Model.Cluster do
   *   `nodeConfig` (*type:* `GoogleApi.Container.V1.Model.NodeConfig.t`, *default:* `nil`) - Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
   *   `addonsConfig` (*type:* `GoogleApi.Container.V1.Model.AddonsConfig.t`, *default:* `nil`) - Configurations for the various addons available to run in the cluster.
   *   `name` (*type:* `String.t`, *default:* `nil`) - The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
-  *   `tpuIpv4CidrBlock` (*type:* `String.t`, *default:* `nil`) - Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+  *   `tpuIpv4CidrBlock` (*type:* `String.t`, *default:* `nil`) - Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). This field is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
   *   `enterpriseConfig` (*type:* `GoogleApi.Container.V1.Model.EnterpriseConfig.t`, *default:* `nil`) - GKE Enterprise Configuration.
   *   `ipAllocationPolicy` (*type:* `GoogleApi.Container.V1.Model.IPAllocationPolicy.t`, *default:* `nil`) - Configuration for cluster IP allocation.
   *   `networkPolicy` (*type:* `GoogleApi.Container.V1.Model.NetworkPolicy.t`, *default:* `nil`) - Configuration options for the NetworkPolicy feature.
-  *   `monitoringService` (*type:* `String.t`, *default:* `nil`) - The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+  *   `monitoringService` (*type:* `String.t`, *default:* `nil`) - The monitoring service the cluster should use to write metrics. Currently available options: * `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   *   `monitoringConfig` (*type:* `GoogleApi.Container.V1.Model.MonitoringConfig.t`, *default:* `nil`) - Monitoring configuration for the cluster.
   *   `loggingConfig` (*type:* `GoogleApi.Container.V1.Model.LoggingConfig.t`, *default:* `nil`) - Logging configuration for the cluster.
   *   `confidentialNodes` (*type:* `GoogleApi.Container.V1.Model.ConfidentialNodes.t`, *default:* `nil`) - Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
@@ -71,7 +71,7 @@ defmodule GoogleApi.Container.V1.Model.Cluster do
   *   `nodePoolDefaults` (*type:* `GoogleApi.Container.V1.Model.NodePoolDefaults.t`, *default:* `nil`) - Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
   *   `shieldedNodes` (*type:* `GoogleApi.Container.V1.Model.ShieldedNodes.t`, *default:* `nil`) - Shielded Nodes configuration.
   *   `zone` (*type:* `String.t`, *default:* `nil`) - Output only. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-  *   `enableTpu` (*type:* `boolean()`, *default:* `nil`) - Enable the ability to use Cloud TPUs in this cluster.
+  *   `enableTpu` (*type:* `boolean()`, *default:* `nil`) - Enable the ability to use Cloud TPUs in this cluster. This field is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
   *   `masterAuthorizedNetworksConfig` (*type:* `GoogleApi.Container.V1.Model.MasterAuthorizedNetworksConfig.t`, *default:* `nil`) - The configuration options for master authorized networks feature. Deprecated: Use ControlPlaneEndpointsConfig.IPEndpointsConfig.authorized_networks_config instead.
   *   `workloadIdentityConfig` (*type:* `GoogleApi.Container.V1.Model.WorkloadIdentityConfig.t`, *default:* `nil`) - Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
   *   `currentNodeVersion` (*type:* `String.t`, *default:* `nil`) - Output only. Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
@@ -82,6 +82,7 @@ defmodule GoogleApi.Container.V1.Model.Cluster do
   *   `autopilot` (*type:* `GoogleApi.Container.V1.Model.Autopilot.t`, *default:* `nil`) - Autopilot configuration for the cluster.
   *   `autoscaling` (*type:* `GoogleApi.Container.V1.Model.ClusterAutoscaling.t`, *default:* `nil`) - Cluster-level autoscaling configuration.
   *   `rbacBindingConfig` (*type:* `GoogleApi.Container.V1.Model.RBACBindingConfig.t`, *default:* `nil`) - RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.
+  *   `podAutoscaling` (*type:* `GoogleApi.Container.V1.Model.PodAutoscaling.t`, *default:* `nil`) - The config for pod autoscaling.
   *   `labelFingerprint` (*type:* `String.t`, *default:* `nil`) - The fingerprint of the set of labels for this cluster.
   *   `enableKubernetesAlpha` (*type:* `boolean()`, *default:* `nil`) - Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
   *   `notificationConfig` (*type:* `GoogleApi.Container.V1.Model.NotificationConfig.t`, *default:* `nil`) - Notification configuration of the cluster.
@@ -168,6 +169,7 @@ defmodule GoogleApi.Container.V1.Model.Cluster do
           :autopilot => GoogleApi.Container.V1.Model.Autopilot.t() | nil,
           :autoscaling => GoogleApi.Container.V1.Model.ClusterAutoscaling.t() | nil,
           :rbacBindingConfig => GoogleApi.Container.V1.Model.RBACBindingConfig.t() | nil,
+          :podAutoscaling => GoogleApi.Container.V1.Model.PodAutoscaling.t() | nil,
           :labelFingerprint => String.t() | nil,
           :enableKubernetesAlpha => boolean() | nil,
           :notificationConfig => GoogleApi.Container.V1.Model.NotificationConfig.t() | nil,
@@ -252,6 +254,7 @@ defmodule GoogleApi.Container.V1.Model.Cluster do
   field(:autopilot, as: GoogleApi.Container.V1.Model.Autopilot)
   field(:autoscaling, as: GoogleApi.Container.V1.Model.ClusterAutoscaling)
   field(:rbacBindingConfig, as: GoogleApi.Container.V1.Model.RBACBindingConfig)
+  field(:podAutoscaling, as: GoogleApi.Container.V1.Model.PodAutoscaling)
   field(:labelFingerprint)
   field(:enableKubernetesAlpha)
   field(:notificationConfig, as: GoogleApi.Container.V1.Model.NotificationConfig)

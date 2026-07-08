@@ -21,15 +21,18 @@ defmodule GoogleApi.DataPortability.V1.Model.InitiatePortabilityArchiveResponse 
 
   ## Attributes
 
+  *   `accessType` (*type:* `String.t`, *default:* `nil`) - The access type of the Archive job initiated by the API.
   *   `archiveJobId` (*type:* `String.t`, *default:* `nil`) - The archive job ID that is initiated in the API. This can be used to get the state of the job.
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :accessType => String.t() | nil,
           :archiveJobId => String.t() | nil
         }
 
+  field(:accessType)
   field(:archiveJobId)
 end
 

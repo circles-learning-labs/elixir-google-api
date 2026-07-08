@@ -21,14 +21,17 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1Dat
 
   ## Attributes
 
+  *   `aclEnabled` (*type:* `boolean()`, *default:* `nil`) - Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
   *   `advancedSiteSearchConfig` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig.t`, *default:* `nil`) - Optional. Configuration for advanced site search.
   *   `billingEstimation` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1DataStoreBillingEstimation.t`, *default:* `nil`) - Output only. Data size estimation for billing.
   *   `cmekConfig` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1CmekConfig.t`, *default:* `nil`) - Output only. CMEK-related information for the DataStore.
   *   `contentConfig` (*type:* `String.t`, *default:* `nil`) - Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
   *   `createTime` (*type:* `DateTime.t`, *default:* `nil`) - Output only. Timestamp the DataStore was created at.
-  *   `defaultSchemaId` (*type:* `String.t`, *default:* `nil`) - Output only. The id of the default Schema asscociated to this data store.
+  *   `defaultSchemaId` (*type:* `String.t`, *default:* `nil`) - Output only. The id of the default Schema associated to this data store.
   *   `displayName` (*type:* `String.t`, *default:* `nil`) - Required. The data store display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
   *   `documentProcessingConfig` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1DocumentProcessingConfig.t`, *default:* `nil`) - Configuration for Document understanding and enrichment.
+  *   `healthcareFhirConfig` (*type:* `GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1HealthcareFhirConfig.t`, *default:* `nil`) - Optional. Configuration for `HEALTHCARE_FHIR` vertical.
+  *   `identityMappingStore` (*type:* `String.t`, *default:* `nil`) - Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format: `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
   *   `industryVertical` (*type:* `String.t`, *default:* `nil`) - Immutable. The industry vertical that the data store registers.
   *   `isInfobotFaqDataStore` (*type:* `boolean()`, *default:* `nil`) - Optional. If set, this DataStore is an Infobot FAQ DataStore.
   *   `kmsKeyName` (*type:* `String.t`, *default:* `nil`) - Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the DataStore will be protected by the KMS key, as indicated in the cmek_config field.
@@ -42,6 +45,7 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1Dat
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
+          :aclEnabled => boolean() | nil,
           :advancedSiteSearchConfig =>
             GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig.t()
             | nil,
@@ -58,6 +62,10 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1Dat
           :documentProcessingConfig =>
             GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1DocumentProcessingConfig.t()
             | nil,
+          :healthcareFhirConfig =>
+            GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1HealthcareFhirConfig.t()
+            | nil,
+          :identityMappingStore => String.t() | nil,
           :industryVertical => String.t() | nil,
           :isInfobotFaqDataStore => boolean() | nil,
           :kmsKeyName => String.t() | nil,
@@ -72,6 +80,8 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1Dat
             GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1WorkspaceConfig.t()
             | nil
         }
+
+  field(:aclEnabled)
 
   field(:advancedSiteSearchConfig,
     as:
@@ -97,6 +107,11 @@ defmodule GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1Dat
       GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1DocumentProcessingConfig
   )
 
+  field(:healthcareFhirConfig,
+    as: GoogleApi.DiscoveryEngine.V1beta.Model.GoogleCloudDiscoveryengineV1HealthcareFhirConfig
+  )
+
+  field(:identityMappingStore)
   field(:industryVertical)
   field(:isInfobotFaqDataStore)
   field(:kmsKeyName)

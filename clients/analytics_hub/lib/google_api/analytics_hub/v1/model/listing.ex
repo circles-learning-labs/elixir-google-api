@@ -21,7 +21,7 @@ defmodule GoogleApi.AnalyticsHub.V1.Model.Listing do
 
   ## Attributes
 
-  *   `bigqueryDataset` (*type:* `GoogleApi.AnalyticsHub.V1.Model.BigQueryDatasetSource.t`, *default:* `nil`) - Required. Shared dataset i.e. BigQuery dataset source.
+  *   `bigqueryDataset` (*type:* `GoogleApi.AnalyticsHub.V1.Model.BigQueryDatasetSource.t`, *default:* `nil`) - Shared dataset i.e. BigQuery dataset source.
   *   `categories` (*type:* `list(String.t)`, *default:* `nil`) - Optional. Categories of the listing. Up to two categories are allowed.
   *   `commercialInfo` (*type:* `GoogleApi.AnalyticsHub.V1.Model.GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo.t`, *default:* `nil`) - Output only. Commercial info contains the information about the commercial data products associated with the listing.
   *   `dataProvider` (*type:* `GoogleApi.AnalyticsHub.V1.Model.DataProvider.t`, *default:* `nil`) - Optional. Details of the data provider who owns the source data.
@@ -30,10 +30,11 @@ defmodule GoogleApi.AnalyticsHub.V1.Model.Listing do
   *   `displayName` (*type:* `String.t`, *default:* `nil`) - Required. Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
   *   `documentation` (*type:* `String.t`, *default:* `nil`) - Optional. Documentation describing the listing.
   *   `icon` (*type:* `String.t`, *default:* `nil`) - Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
+  *   `logLinkedDatasetQueryUserEmail` (*type:* `boolean()`, *default:* `nil`) - Optional. By default, false. If true, the Listing has an email sharing mandate enabled.
   *   `name` (*type:* `String.t`, *default:* `nil`) - Output only. The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
   *   `primaryContact` (*type:* `String.t`, *default:* `nil`) - Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
   *   `publisher` (*type:* `GoogleApi.AnalyticsHub.V1.Model.Publisher.t`, *default:* `nil`) - Optional. Details of the publisher who owns the listing and who can share the source data.
-  *   `pubsubTopic` (*type:* `GoogleApi.AnalyticsHub.V1.Model.PubSubTopicSource.t`, *default:* `nil`) - Required. Pub/Sub topic source.
+  *   `pubsubTopic` (*type:* `GoogleApi.AnalyticsHub.V1.Model.PubSubTopicSource.t`, *default:* `nil`) - Pub/Sub topic source.
   *   `requestAccess` (*type:* `String.t`, *default:* `nil`) - Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
   *   `resourceType` (*type:* `String.t`, *default:* `nil`) - Output only. Listing shared asset type.
   *   `restrictedExportConfig` (*type:* `GoogleApi.AnalyticsHub.V1.Model.RestrictedExportConfig.t`, *default:* `nil`) - Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
@@ -54,6 +55,7 @@ defmodule GoogleApi.AnalyticsHub.V1.Model.Listing do
           :displayName => String.t() | nil,
           :documentation => String.t() | nil,
           :icon => String.t() | nil,
+          :logLinkedDatasetQueryUserEmail => boolean() | nil,
           :name => String.t() | nil,
           :primaryContact => String.t() | nil,
           :publisher => GoogleApi.AnalyticsHub.V1.Model.Publisher.t() | nil,
@@ -78,6 +80,7 @@ defmodule GoogleApi.AnalyticsHub.V1.Model.Listing do
   field(:displayName)
   field(:documentation)
   field(:icon)
+  field(:logLinkedDatasetQueryUserEmail)
   field(:name)
   field(:primaryContact)
   field(:publisher, as: GoogleApi.AnalyticsHub.V1.Model.Publisher)

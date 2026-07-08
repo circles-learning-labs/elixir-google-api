@@ -25,9 +25,11 @@ defmodule GoogleApi.BigQuery.V2.Model.QueryRequest do
   *   `continuous` (*type:* `boolean()`, *default:* `nil`) - [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
   *   `createSession` (*type:* `boolean()`, *default:* `nil`) - Optional. If true, creates a new session using a randomly generated session_id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode. The session location will be set to QueryRequest.location if it is present, otherwise it's set to the default location based on existing routing logic.
   *   `defaultDataset` (*type:* `GoogleApi.BigQuery.V2.Model.DatasetReference.t`, *default:* `nil`) - Optional. Specifies the default datasetId and projectId to assume for any unqualified table names in the query. If not set, all table names in the query string must be qualified in the format 'datasetId.tableId'.
+  *   `destinationEncryptionConfiguration` (*type:* `GoogleApi.BigQuery.V2.Model.EncryptionConfiguration.t`, *default:* `nil`) - Optional. Custom encryption configuration (e.g., Cloud KMS keys)
   *   `dryRun` (*type:* `boolean()`, *default:* `nil`) - Optional. If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns statistics about the job such as how many bytes would be processed. If the query is invalid, an error returns. The default value is false.
   *   `formatOptions` (*type:* `GoogleApi.BigQuery.V2.Model.DataFormatOptions.t`, *default:* `nil`) - Optional. Output format adjustments.
   *   `jobCreationMode` (*type:* `String.t`, *default:* `nil`) - Optional. If not set, jobs are always required. If set, the query request will follow the behavior described JobCreationMode. [Preview](https://cloud.google.com/products/#product-launch-stages)
+  *   `jobTimeoutMs` (*type:* `String.t`, *default:* `nil`) - Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery will attempt to stop a longer job, but may not always succeed in canceling it before the job completes. For example, a job that takes more than 60 seconds to complete has a better chance of being stopped than a job that takes 10 seconds to complete. This timeout applies to the query even if a job does not need to be created.
   *   `kind` (*type:* `String.t`, *default:* `bigquery#queryRequest`) - The resource type of the request.
   *   `labels` (*type:* `map()`, *default:* `nil`) - Optional. The labels associated with this query. Labels can be used to organize and group query jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label keys must start with a letter and each label in the list must have a different key.
   *   `location` (*type:* `String.t`, *default:* `nil`) - The geographic location where the job should run. For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
@@ -38,9 +40,11 @@ defmodule GoogleApi.BigQuery.V2.Model.QueryRequest do
   *   `query` (*type:* `String.t`, *default:* `nil`) - Required. A query string to execute, using Google Standard SQL or legacy SQL syntax. Example: "SELECT COUNT(f1) FROM myProjectId.myDatasetId.myTableId".
   *   `queryParameters` (*type:* `list(GoogleApi.BigQuery.V2.Model.QueryParameter.t)`, *default:* `nil`) - Query parameters for GoogleSQL queries.
   *   `requestId` (*type:* `String.t`, *default:* `nil`) - Optional. A unique user provided identifier to ensure idempotent behavior for queries. Note that this is different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36 ASCII characters. A UUID is recommended. 2. Read only queries can ignore this token since they are nullipotent by definition. 3. For the purposes of idempotency ensured by the request_id, a request is considered duplicate of another only if they have the same request_id and are actually duplicates. When determining whether a request is a duplicate of another request, all parameters in the request that may affect the result are considered. For example, query, connection_properties, query_parameters, use_legacy_sql are parameters that affect the result and are considered when determining whether a request is a duplicate, but properties like timeout_ms don't affect the result and are thus not considered. Dry run query requests are never considered duplicate of another request. 4. When a duplicate mutating query request is detected, it returns: a. the results of the mutation if it completes successfully within the timeout. b. the running operation if it is still in progress at the end of the timeout. 5. Its lifetime is limited to 15 minutes. In other words, if two requests are sent with the same request_id, but more than 15 minutes apart, idempotency is not guaranteed.
+  *   `reservation` (*type:* `String.t`, *default:* `nil`) - Optional. The reservation that jobs.query request would use. User can specify a reservation to execute the job.query. The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
   *   `timeoutMs` (*type:* `integer()`, *default:* `nil`) - Optional. Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to wait for the query to complete. By default, this limit is 10 seconds (10,000 milliseconds). If the query is complete, the jobComplete field in the response is true. If the query has not yet completed, jobComplete is false. You can request a longer timeout period in the timeoutMs field. However, the call is not guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000 milliseconds), even if the query is not complete. If jobComplete is false, you can continue to wait for the query to complete by calling the getQueryResults method until the jobComplete field in the getQueryResults response is true.
   *   `useLegacySql` (*type:* `boolean()`, *default:* `true`) - Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
   *   `useQueryCache` (*type:* `boolean()`, *default:* `true`) - Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. The default value is true.
+  *   `writeIncrementalResults` (*type:* `boolean()`, *default:* `nil`) - Optional. This is only supported for SELECT query. If set, the query is allowed to write results incrementally to the temporary result table. This may incur a performance penalty. This option cannot be used with Legacy SQL. This feature is not yet available.
   """
 
   use GoogleApi.Gax.ModelBase
@@ -50,9 +54,12 @@ defmodule GoogleApi.BigQuery.V2.Model.QueryRequest do
           :continuous => boolean() | nil,
           :createSession => boolean() | nil,
           :defaultDataset => GoogleApi.BigQuery.V2.Model.DatasetReference.t() | nil,
+          :destinationEncryptionConfiguration =>
+            GoogleApi.BigQuery.V2.Model.EncryptionConfiguration.t() | nil,
           :dryRun => boolean() | nil,
           :formatOptions => GoogleApi.BigQuery.V2.Model.DataFormatOptions.t() | nil,
           :jobCreationMode => String.t() | nil,
+          :jobTimeoutMs => String.t() | nil,
           :kind => String.t() | nil,
           :labels => map() | nil,
           :location => String.t() | nil,
@@ -63,18 +70,26 @@ defmodule GoogleApi.BigQuery.V2.Model.QueryRequest do
           :query => String.t() | nil,
           :queryParameters => list(GoogleApi.BigQuery.V2.Model.QueryParameter.t()) | nil,
           :requestId => String.t() | nil,
+          :reservation => String.t() | nil,
           :timeoutMs => integer() | nil,
           :useLegacySql => boolean() | nil,
-          :useQueryCache => boolean() | nil
+          :useQueryCache => boolean() | nil,
+          :writeIncrementalResults => boolean() | nil
         }
 
   field(:connectionProperties, as: GoogleApi.BigQuery.V2.Model.ConnectionProperty, type: :list)
   field(:continuous)
   field(:createSession)
   field(:defaultDataset, as: GoogleApi.BigQuery.V2.Model.DatasetReference)
+
+  field(:destinationEncryptionConfiguration,
+    as: GoogleApi.BigQuery.V2.Model.EncryptionConfiguration
+  )
+
   field(:dryRun)
   field(:formatOptions, as: GoogleApi.BigQuery.V2.Model.DataFormatOptions)
   field(:jobCreationMode)
+  field(:jobTimeoutMs)
   field(:kind)
   field(:labels, type: :map)
   field(:location)
@@ -85,9 +100,11 @@ defmodule GoogleApi.BigQuery.V2.Model.QueryRequest do
   field(:query)
   field(:queryParameters, as: GoogleApi.BigQuery.V2.Model.QueryParameter, type: :list)
   field(:requestId)
+  field(:reservation)
   field(:timeoutMs)
   field(:useLegacySql)
   field(:useQueryCache)
+  field(:writeIncrementalResults)
 end
 
 defimpl Poison.Decoder, for: GoogleApi.BigQuery.V2.Model.QueryRequest do

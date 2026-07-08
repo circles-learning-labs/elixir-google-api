@@ -17,11 +17,11 @@
 
 defmodule GoogleApi.Container.V1.Model.WindowsNodeConfig do
   @moduledoc """
-  Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+  Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings.
 
   ## Attributes
 
-  *   `osVersion` (*type:* `String.t`, *default:* `nil`) - OSVersion specifies the Windows node config to be used on the node
+  *   `osVersion` (*type:* `String.t`, *default:* `nil`) - OSVersion specifies the Windows node config to be used on the node.
   """
 
   use GoogleApi.Gax.ModelBase

@@ -21,7 +21,7 @@ defmodule GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1SchemaTextDataIte
 
   ## Attributes
 
-  *   `gcsUri` (*type:* `String.t`, *default:* `nil`) - Output only. Google Cloud Storage URI points to the original text in user's bucket. The text file is up to 10MB in size.
+  *   `gcsUri` (*type:* `String.t`, *default:* `nil`) - Output only. Google Cloud Storage URI points to a copy of the original text in the Vertex-managed bucket in the user's project. The text file is up to 10MB in size.
   """
 
   use GoogleApi.Gax.ModelBase

@@ -17,20 +17,23 @@
 
 defmodule GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1VertexAISearch do
   @moduledoc """
-  Retrieve from Vertex AI Search datastore for grounding. See https://cloud.google.com/products/agent-builder
+  Retrieve from Vertex AI Search datastore or engine for grounding. datastore and engine are mutually exclusive. See https://cloud.google.com/products/agent-builder
 
   ## Attributes
 
-  *   `datastore` (*type:* `String.t`, *default:* `nil`) - Required. Fully-qualified Vertex AI Search data store resource ID. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+  *   `datastore` (*type:* `String.t`, *default:* `nil`) - Optional. Fully-qualified Vertex AI Search data store resource ID. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+  *   `engine` (*type:* `String.t`, *default:* `nil`) - Optional. Fully-qualified Vertex AI Search engine resource ID. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
   """
 
   use GoogleApi.Gax.ModelBase
 
   @type t :: %__MODULE__{
-          :datastore => String.t() | nil
+          :datastore => String.t() | nil,
+          :engine => String.t() | nil
         }
 
   field(:datastore)
+  field(:engine)
 end
 
 defimpl Poison.Decoder, for: GoogleApi.AIPlatform.V1.Model.GoogleCloudAiplatformV1VertexAISearch do
